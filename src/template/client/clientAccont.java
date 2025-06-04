@@ -17,7 +17,23 @@ public class clientAccont extends javax.swing.JFrame {
      * Creates new form clientAccont
      */
     public clientAccont() {
+        
+        //inicializar das informaçoes da tela
+        
         initComponents();
+        
+        String clienteName = "usuário";
+        String conta = "000";
+        String agencia = "000";
+        String acConcat = "Conta: "+ conta+"   |   Agência: "+ conta; //concatenaçao entre conta e agencia
+        
+        hello.setText("Olá, "+ clienteName);
+        dados.setText(acConcat);
+        
+        double saldo = 100;
+        txt_saldo.setText("Saldo: R$"+ saldo);
+        
+        
     }
 
     /**
@@ -30,8 +46,8 @@ public class clientAccont extends javax.swing.JFrame {
     private void initComponents() {
 
         header = new javax.swing.JPanel();
-        pageName = new javax.swing.JLabel();
-        Logotipo1 = new javax.swing.JLabel();
+        dados = new javax.swing.JLabel();
+        hello = new javax.swing.JLabel();
         gradient = new javax.swing.JLabel();
         txt_saldo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -48,21 +64,21 @@ public class clientAccont extends javax.swing.JFrame {
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
 
-        pageName.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        pageName.setForeground(new java.awt.Color(255, 255, 255));
-        pageName.setText("Conta: 000.000   |   Agência: 00000");
-        pageName.setToolTipText("");
-        pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        header.add(pageName);
-        pageName.setBounds(20, 110, 300, 23);
+        dados.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        dados.setForeground(new java.awt.Color(255, 255, 255));
+        dados.setText("Conta: 000.000   |   Agência: 00000");
+        dados.setToolTipText("");
+        dados.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        header.add(dados);
+        dados.setBounds(20, 110, 300, 23);
 
-        Logotipo1.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
-        Logotipo1.setForeground(new java.awt.Color(255, 255, 255));
-        Logotipo1.setText("Olá, {user}");
-        Logotipo1.setToolTipText("");
-        Logotipo1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        header.add(Logotipo1);
-        Logotipo1.setBounds(20, 30, 250, 78);
+        hello.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        hello.setForeground(new java.awt.Color(255, 255, 255));
+        hello.setText("Olá, {user}");
+        hello.setToolTipText("");
+        hello.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        header.add(hello);
+        hello.setBounds(20, 30, 250, 78);
 
         gradient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/red_bg.jpg"))); // NOI18N
@@ -128,19 +144,33 @@ public class clientAccont extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-        // TODO add your handling code here:
+
+        editarConta targetScreen = new editarConta();
+        
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+        
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_transfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transfActionPerformed
-        // TODO add your handling code here:
+       transacao targetScreen = new transacao();
+       
+       this.setVisible(false);
+        targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_transfActionPerformed
 
     private void btn_histActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_histActionPerformed
-        // TODO add your handling code here:
+       historico targetScreen = new historico();
+       
+       this.setVisible(false);
+        targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_histActionPerformed
 
     private void btn_denunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_denunActionPerformed
-        // TODO add your handling code here:
+       denuncia targetScreen = new denuncia();
+       
+       this.setVisible(false);
+        targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_denunActionPerformed
 
     /**
@@ -169,15 +199,15 @@ public class clientAccont extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logotipo1;
     private javax.swing.JButton btn_denun;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_hist;
     private javax.swing.JButton btn_transf;
+    private javax.swing.JLabel dados;
     private javax.swing.JLabel gradient;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel hello;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel pageName;
     private javax.swing.JLabel txt_saldo;
     // End of variables declaration//GEN-END:variables
 }

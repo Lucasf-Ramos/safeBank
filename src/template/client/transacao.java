@@ -18,6 +18,10 @@ public class transacao extends javax.swing.JFrame {
      */
     public transacao() {
         initComponents();
+        
+        double saldo = 100;
+        txt_saldo.setText("Saldo: R$"+ saldo);
+        
     }
 
     /**
@@ -29,22 +33,147 @@ public class transacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        header = new javax.swing.JPanel();
+        pageName = new javax.swing.JLabel();
+        gradient = new javax.swing.JLabel();
+        txt_saldo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbl_remetente = new javax.swing.JLabel();
+        txtfld_remetente = new javax.swing.JTextField();
+        lbl_quantia = new javax.swing.JLabel();
+        txtfld_quantia = new javax.swing.JTextField();
+        lbl_senha = new javax.swing.JLabel();
+        btn_enviar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
+        txtfld_senha = new javax.swing.JPasswordField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 720));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        header.setBackground(new java.awt.Color(255, 69, 69));
+        header.setLayout(null);
+
+        pageName.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        pageName.setForeground(new java.awt.Color(255, 255, 255));
+        pageName.setText("Transferência");
+        pageName.setToolTipText("");
+        pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        header.add(pageName);
+        pageName.setBounds(10, 130, 300, 23);
+
+        gradient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/red_bg.jpg"))); // NOI18N
+        header.add(gradient);
+        gradient.setBounds(0, 0, 1080, 170);
+
+        getContentPane().add(header);
+        header.setBounds(0, 0, 1080, 170);
+
+        txt_saldo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        txt_saldo.setForeground(new java.awt.Color(102, 102, 102));
+        txt_saldo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        txt_saldo.setText("Saldo: R$100,00");
+        txt_saldo.setToolTipText("");
+        txt_saldo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(txt_saldo);
+        txt_saldo.setBounds(10, 200, 1040, 30);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(10, 250, 1040, 10);
+
+        lbl_remetente.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_remetente.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_remetente.setText("Pix do remetente:");
+        lbl_remetente.setToolTipText("");
+        lbl_remetente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_remetente);
+        lbl_remetente.setBounds(310, 300, 300, 23);
+
+        txtfld_remetente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtfld_remetente);
+        txtfld_remetente.setBounds(310, 330, 420, 22);
+
+        lbl_quantia.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_quantia.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_quantia.setText("Quantia:");
+        lbl_quantia.setToolTipText("");
+        lbl_quantia.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_quantia);
+        lbl_quantia.setBounds(310, 360, 300, 23);
+
+        txtfld_quantia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtfld_quantia);
+        txtfld_quantia.setBounds(310, 390, 420, 22);
+
+        lbl_senha.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_senha.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_senha.setText("Senha:");
+        lbl_senha.setToolTipText("");
+        lbl_senha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_senha);
+        lbl_senha.setBounds(310, 420, 300, 23);
+
+        btn_enviar.setBackground(new java.awt.Color(255, 69, 69));
+        btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_enviar.setText("Enviar");
+        btn_enviar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_enviar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_enviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_enviarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_enviar);
+        btn_enviar.setBounds(430, 490, 180, 30);
+
+        btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
+        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cancelar);
+        btn_cancelar.setBounds(430, 530, 180, 30);
+
+        txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtfld_senha);
+        txtfld_senha.setBounds(310, 450, 420, 22);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
+        try {
+             String remetente = txtfld_remetente.getText();
+             double quantia = Double.parseDouble(txtfld_quantia.getText());
+             String senha = String.valueOf(txtfld_senha.getPassword());
+        
+        } catch (Exception e) {
+        }
+        
+        
+       
+        //if e tals e depois retorna pra tela normal
+        
+        
+        
+        //retorna a tela conta
+        clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_enviarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+       clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,5 +201,18 @@ public class transacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_enviar;
+    private javax.swing.JLabel gradient;
+    private javax.swing.JPanel header;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl_quantia;
+    private javax.swing.JLabel lbl_remetente;
+    private javax.swing.JLabel lbl_senha;
+    private javax.swing.JLabel pageName;
+    private javax.swing.JLabel txt_saldo;
+    private javax.swing.JTextField txtfld_quantia;
+    private javax.swing.JTextField txtfld_remetente;
+    private javax.swing.JPasswordField txtfld_senha;
     // End of variables declaration//GEN-END:variables
 }

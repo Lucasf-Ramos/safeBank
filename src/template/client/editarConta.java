@@ -18,6 +18,13 @@ public class editarConta extends javax.swing.JFrame {
      */
     public editarConta() {
         initComponents();
+        
+        String currentName = "usuario 012"; //coloque o getNome e o getSenha aqui
+        String currentPass = "012";
+        
+        txtfld_user.setText(currentName);
+        txtfld_senha.setText(currentPass);
+        
     }
 
     /**
@@ -37,8 +44,8 @@ public class editarConta extends javax.swing.JFrame {
         txtfld_senha = new javax.swing.JPasswordField();
         lbl_senhaantiga = new javax.swing.JLabel();
         txtfld_senhaConfirm = new javax.swing.JPasswordField();
-        btn_criarconta = new javax.swing.JButton();
-        btn_entrar = new javax.swing.JButton();
+        btn_confirmar = new javax.swing.JButton();
+        btn_cancelar = new javax.swing.JButton();
         Logotipo = new javax.swing.JLabel();
         _______ = new javax.swing.JSeparator();
 
@@ -93,21 +100,31 @@ public class editarConta extends javax.swing.JFrame {
         getContentPane().add(txtfld_senhaConfirm);
         txtfld_senhaConfirm.setBounds(310, 430, 420, 22);
 
-        btn_criarconta.setBackground(new java.awt.Color(255, 69, 69));
-        btn_criarconta.setForeground(new java.awt.Color(255, 255, 255));
-        btn_criarconta.setText("Editar");
-        btn_criarconta.setToolTipText("Preencha os campos e clique aqui para entrar");
-        btn_criarconta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(btn_criarconta);
-        btn_criarconta.setBounds(430, 490, 180, 30);
+        btn_confirmar.setBackground(new java.awt.Color(255, 69, 69));
+        btn_confirmar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_confirmar.setText("Confirmar");
+        btn_confirmar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_confirmar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_confirmar);
+        btn_confirmar.setBounds(430, 490, 180, 30);
 
-        btn_entrar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_entrar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_entrar.setText("Cancelar");
-        btn_entrar.setToolTipText("Preencha os campos e clique aqui para entrar");
-        btn_entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(btn_entrar);
-        btn_entrar.setBounds(430, 530, 180, 30);
+        btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
+        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cancelar);
+        btn_cancelar.setBounds(430, 530, 180, 30);
 
         Logotipo.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         Logotipo.setForeground(new java.awt.Color(102, 102, 102));
@@ -123,6 +140,24 @@ public class editarConta extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+        
+        //if a senha atual e blabla bla dai continua, se não da telinha de erro
+        
+        //retorna a tela conta
+        clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btn_confirmarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,8 +187,8 @@ public class editarConta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logotipo;
     private javax.swing.JSeparator _______;
-    private javax.swing.JButton btn_criarconta;
-    private javax.swing.JButton btn_entrar;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_confirmar;
     private javax.swing.JLabel gradient;
     private javax.swing.JPanel header;
     private javax.swing.JLabel lbl_senhaantiga;

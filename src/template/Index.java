@@ -1,5 +1,7 @@
 package template;
 
+import template.client.clientAccont;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -122,6 +124,11 @@ public class Index extends javax.swing.JFrame {
         btn_criarconta.setText("Entrar");
         btn_criarconta.setToolTipText("Preencha os campos e clique aqui para entrar");
         btn_criarconta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_criarconta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_criarcontaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_criarconta);
         btn_criarconta.setBounds(440, 430, 180, 30);
 
@@ -132,6 +139,20 @@ public class Index extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_criarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarcontaActionPerformed
+        String user = txtfld_user.getText();
+        String senha = String.valueOf(txtfld_senha.getPassword());
+        
+        //if(metodo de check login){}
+        
+        //troca de tela para a tela do cliente
+        clientAccont acont = new clientAccont();
+        this.setVisible(false);
+        acont.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btn_criarcontaActionPerformed
 
     /**
      * @param args the command line arguments
