@@ -29,23 +29,135 @@ public class denuncia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        header = new javax.swing.JPanel();
+        gradient = new javax.swing.JLabel();
+        pageName = new javax.swing.JLabel();
+        _______ = new javax.swing.JSeparator();
+        lbl_resumo = new javax.swing.JLabel();
+        txtfld_user = new javax.swing.JTextField();
+        lbl_user = new javax.swing.JLabel();
+        txtarea_resumo = new javax.swing.JScrollPane();
+        txtfld_resumo = new javax.swing.JTextArea();
+        lbl_data = new javax.swing.JLabel();
+        txtfld_data = new javax.swing.JTextField();
+        btn_cancelar = new javax.swing.JButton();
+        btn_enviar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        header.setBackground(new java.awt.Color(255, 69, 69));
+        header.setLayout(null);
+
+        gradient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/red_bg.jpg"))); // NOI18N
+        header.add(gradient);
+        gradient.setBounds(0, 0, 1080, 60);
+
+        getContentPane().add(header);
+        header.setBounds(0, 0, 1080, 60);
+
+        pageName.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
+        pageName.setForeground(new java.awt.Color(102, 102, 102));
+        pageName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageName.setText("Fazer Denúncia");
+        pageName.setToolTipText("");
+        pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(pageName);
+        pageName.setBounds(240, 90, 610, 78);
+        getContentPane().add(_______);
+        _______.setBounds(80, 180, 930, 10);
+
+        lbl_resumo.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_resumo.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_resumo.setText("Resumo:");
+        lbl_resumo.setToolTipText("");
+        lbl_resumo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_resumo);
+        lbl_resumo.setBounds(310, 320, 300, 23);
+
+        txtfld_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtfld_user);
+        txtfld_user.setBounds(310, 270, 420, 22);
+
+        lbl_user.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_user.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_user.setText("Conta a denúnciar:");
+        lbl_user.setToolTipText("");
+        lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_user);
+        lbl_user.setBounds(310, 240, 300, 23);
+
+        txtfld_resumo.setColumns(20);
+        txtfld_resumo.setRows(5);
+        txtfld_resumo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtarea_resumo.setViewportView(txtfld_resumo);
+
+        getContentPane().add(txtarea_resumo);
+        txtarea_resumo.setBounds(310, 350, 420, 90);
+
+        lbl_data.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        lbl_data.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_data.setText("Data:");
+        lbl_data.setToolTipText("");
+        lbl_data.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(lbl_data);
+        lbl_data.setBounds(310, 460, 300, 23);
+
+        txtfld_data.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        getContentPane().add(txtfld_data);
+        txtfld_data.setBounds(310, 490, 130, 22);
+
+        btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
+        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_cancelar);
+        btn_cancelar.setBounds(430, 590, 180, 30);
+
+        btn_enviar.setBackground(new java.awt.Color(255, 69, 69));
+        btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_enviar.setText("Enviar");
+        btn_enviar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_enviar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_enviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_enviarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_enviar);
+        btn_enviar.setBounds(430, 550, 180, 30);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
+        
+        String conta = txtfld_user.getText(); //conta a ser denunciada
+        String resumo = txtfld_resumo.getText();
+        String data = txtfld_data.getText();
+        
+        //faz o processo aqui
+        
+        clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_enviarActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+       clientAccont targetScreen = new clientAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,5 +185,18 @@ public class denuncia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSeparator _______;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_enviar;
+    private javax.swing.JLabel gradient;
+    private javax.swing.JPanel header;
+    private javax.swing.JLabel lbl_data;
+    private javax.swing.JLabel lbl_resumo;
+    private javax.swing.JLabel lbl_user;
+    private javax.swing.JLabel pageName;
+    private javax.swing.JScrollPane txtarea_resumo;
+    private javax.swing.JTextField txtfld_data;
+    private javax.swing.JTextArea txtfld_resumo;
+    private javax.swing.JTextField txtfld_user;
     // End of variables declaration//GEN-END:variables
 }
