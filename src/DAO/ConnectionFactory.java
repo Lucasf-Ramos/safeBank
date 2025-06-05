@@ -12,7 +12,7 @@ public class ConnectionFactory
         Connection conn = null;
         try 
         {
-            String url = "jdbc:mysql://localhost:3306/java?user=root&password=password";
+            String url = "jdbc:mysql://localhost:3306/safebank?user=root&password=password";
             conn = DriverManager.getConnection(url);
         } catch (SQLException erro) 
         {
