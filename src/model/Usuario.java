@@ -3,14 +3,24 @@ package model;
 
 public class Usuario {
     
+    protected long id;
     protected String nome;
     protected String email;
     protected String senha;
 
-    public Usuario(String nome, String email, String senha) {
-    this.nome = nome;
-    this.email = email;
-    this.senha = senha;
+    public Usuario(long id, String nome, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+    
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
     
     public String getNome() { return nome; }
@@ -21,5 +31,4 @@ public class Usuario {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
-    
 }

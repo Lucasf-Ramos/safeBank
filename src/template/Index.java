@@ -1,6 +1,17 @@
 package template;
 
+import DAO.ConnectionFactory;
+import DAO.UsuarioDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Funcionario;
+import model.Sessao;
+import model.Usuario;
 import template.client.clientAccont;
+import template.client.denuncia;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -141,17 +152,32 @@ public class Index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_criarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarcontaActionPerformed
-        String user = txtfld_user.getText();
+        String email = txtfld_user.getText();
         String senha = String.valueOf(txtfld_senha.getPassword());
         
-        //if(metodo de check login){}
+        UsuarioDAO dao = new UsuarioDAO();
         
-        //troca de tela para a tela do cliente
-        clientAccont acont = new clientAccont();
-        this.setVisible(false);
-        acont.setVisible(true);
-        
-        
+        Usuario user = dao.fazerLogin(email, senha);
+
+        if (user != null) {
+            Sessao.setUsuario(user);
+            
+            if (user instanceof Cliente) {
+                clientAccont acont = new clientAccont();
+                this.setVisible(false);
+                acont.setVisible(true);
+            } else if (user instanceof Funcionario) {
+                denuncia denuncia = new denuncia();
+                this.setVisible(false);
+                denuncia.setVisible(true);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,
+                "Email ou senha inválidos!",
+                "Erro de login",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_criarcontaActionPerformed
 
     /**
