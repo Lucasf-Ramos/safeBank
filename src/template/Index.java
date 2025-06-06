@@ -50,8 +50,8 @@ public class Index extends javax.swing.JFrame {
         txtfld_user = new javax.swing.JTextField();
         lbl_senha = new javax.swing.JLabel();
         txtfld_senha = new javax.swing.JPasswordField();
-        btn_entrar = new javax.swing.JButton();
-        btn_criarconta = new javax.swing.JButton();
+        btn_CriarConta = new javax.swing.JButton();
+        btn_Entrar = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,7 +96,7 @@ public class Index extends javax.swing.JFrame {
         pageName.setToolTipText("");
         pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(pageName);
-        pageName.setBounds(370, 207, 300, 23);
+        pageName.setBounds(370, 207, 300, 24);
 
         lbl_user.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +104,7 @@ public class Index extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(320, 300, 300, 23);
+        lbl_user.setBounds(320, 300, 300, 24);
 
         txtfld_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_user);
@@ -116,32 +116,37 @@ public class Index extends javax.swing.JFrame {
         lbl_senha.setToolTipText("");
         lbl_senha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_senha);
-        lbl_senha.setBounds(320, 360, 300, 23);
+        lbl_senha.setBounds(320, 360, 300, 24);
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senha);
         txtfld_senha.setBounds(320, 390, 420, 22);
 
-        btn_entrar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_entrar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_entrar.setText("Criar Conta");
-        btn_entrar.setToolTipText("Preencha os campos e clique aqui para entrar");
-        btn_entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(btn_entrar);
-        btn_entrar.setBounds(440, 470, 180, 30);
-
-        btn_criarconta.setBackground(new java.awt.Color(255, 69, 69));
-        btn_criarconta.setForeground(new java.awt.Color(255, 255, 255));
-        btn_criarconta.setText("Entrar");
-        btn_criarconta.setToolTipText("Preencha os campos e clique aqui para entrar");
-        btn_criarconta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_criarconta.addActionListener(new java.awt.event.ActionListener() {
+        btn_CriarConta.setBackground(new java.awt.Color(153, 153, 153));
+        btn_CriarConta.setForeground(new java.awt.Color(255, 255, 255));
+        btn_CriarConta.setText("Criar Conta");
+        btn_CriarConta.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_CriarConta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_CriarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_criarcontaActionPerformed(evt);
+                btn_CriarContaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_criarconta);
-        btn_criarconta.setBounds(440, 430, 180, 30);
+        getContentPane().add(btn_CriarConta);
+        btn_CriarConta.setBounds(440, 470, 180, 30);
+
+        btn_Entrar.setBackground(new java.awt.Color(255, 69, 69));
+        btn_Entrar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Entrar.setText("Entrar");
+        btn_Entrar.setToolTipText("Preencha os campos e clique aqui para entrar");
+        btn_Entrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EntrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Entrar);
+        btn_Entrar.setBounds(440, 430, 180, 30);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/blur_greyBg.jpg"))); // NOI18N
         getContentPane().add(Background);
@@ -151,7 +156,7 @@ public class Index extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_criarcontaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_criarcontaActionPerformed
+    private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
         String email = txtfld_user.getText();
         String senha = String.valueOf(txtfld_senha.getPassword());
         
@@ -178,7 +183,11 @@ public class Index extends javax.swing.JFrame {
                 "Erro de login",
                 JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btn_criarcontaActionPerformed
+    }//GEN-LAST:event_btn_EntrarActionPerformed
+
+    private void btn_CriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CriarContaActionPerformed
+        // Logica pra ir pra tela de cadastro de cliente
+    }//GEN-LAST:event_btn_CriarContaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,8 +218,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Logotipo;
     private javax.swing.JSeparator _______;
-    private javax.swing.JButton btn_criarconta;
-    private javax.swing.JButton btn_entrar;
+    private javax.swing.JButton btn_CriarConta;
+    private javax.swing.JButton btn_Entrar;
     private javax.swing.JPanel header;
     private javax.swing.JLabel lbl_senha;
     private javax.swing.JLabel lbl_user;
