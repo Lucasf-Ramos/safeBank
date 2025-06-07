@@ -1,11 +1,11 @@
-package template.client;
+package template.adm;
 
+import template.adm.transationCell;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import template.adm.transationCell;
-import template.client.clientAccont;
+import template.client.denunCell;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,30 +16,31 @@ import template.client.clientAccont;
  *
  * @author Natanael-PC
  */
-public class historico extends javax.swing.JFrame {
+public class funcAccont extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(historico.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(funcAccont.class.getName());
 
     /**
      * Creates new form historico
      */
-    public historico() {
+    public funcAccont() {
         initComponents();
+        String clienteName = "usuário";
+        hello.setText("Olá, "+ clienteName);
         
         int verticalGap = 10; // gap entre as celulas
         
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         
-        transationCell cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell()};
-        //para: // De: // Data: // Cod: // quantia 
-        //essa é a sequencia para criar um campo ja preenchido, quando entrar aqui so puxa uma lista do banco de dados com essas informaçoes
+        denunCell cell[] = {new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 1)};
+        //denunciado: //data //id:
         
         
         
         //adiciona as celulas
         int alturaTotal = ((60 + verticalGap))* (cell.length + 1);
         content.setPreferredSize(new Dimension(400, alturaTotal));
-        for(transationCell currentCell : cell){
+        for(denunCell currentCell : cell){
             content.add(Box.createVerticalStrut(verticalGap));
             content.add(currentCell);
             
@@ -59,34 +60,48 @@ public class historico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        header = new javax.swing.JPanel();
-        btn_cancelar = new javax.swing.JButton();
-        gradient = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         content = new javax.swing.JPanel();
-        historicoTitle = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        header = new javax.swing.JPanel();
+        hello = new javax.swing.JLabel();
+        gradient = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        title.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(102, 102, 102));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Denuncias");
+        title.setToolTipText("");
+        title.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        title.setPreferredSize(new java.awt.Dimension(1080, 720));
+        getContentPane().add(title);
+        title.setBounds(10, 190, 1040, 30);
+
+        content.setLayout(null);
+        scroll.setViewportView(content);
+
+        getContentPane().add(scroll);
+        scroll.setBounds(0, 270, 1070, 620);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(20, 230, 1040, 10);
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
 
-        btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_cancelar.setText("Voltar");
-        btn_cancelar.setToolTipText("Preencha os campos e clique aqui para entrar");
-        btn_cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelarActionPerformed(evt);
-            }
-        });
-        header.add(btn_cancelar);
-        btn_cancelar.setBounds(960, 10, 100, 20);
+        hello.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        hello.setForeground(new java.awt.Color(255, 255, 255));
+        hello.setText("Olá, {user}");
+        hello.setToolTipText("");
+        hello.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        header.add(hello);
+        hello.setBounds(20, 30, 250, 78);
 
         gradient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/red_bg.jpg"))); // NOI18N
@@ -94,36 +109,11 @@ public class historico extends javax.swing.JFrame {
         gradient.setBounds(0, 0, 1080, 170);
 
         getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 50);
-
-        content.setPreferredSize(new java.awt.Dimension(1080, 720));
-        content.setLayout(null);
-        scroll.setViewportView(content);
-
-        getContentPane().add(scroll);
-        scroll.setBounds(0, 140, 1070, 750);
-
-        historicoTitle.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
-        historicoTitle.setForeground(new java.awt.Color(102, 102, 102));
-        historicoTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        historicoTitle.setText("Histórico");
-        historicoTitle.setToolTipText("");
-        historicoTitle.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        historicoTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(historicoTitle);
-        historicoTitle.setBounds(10, 70, 1040, 30);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 120, 1040, 10);
+        header.setBounds(0, 0, 1080, 170);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        clientAccont targetScreen = new clientAccont();
-        this.setVisible(false);
-        targetScreen.setVisible(true);
-    }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,16 +137,16 @@ public class historico extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new historico().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new funcAccont().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cancelar;
     private javax.swing.JPanel content;
     private javax.swing.JLabel gradient;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel historicoTitle;
+    private javax.swing.JLabel hello;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scroll;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
