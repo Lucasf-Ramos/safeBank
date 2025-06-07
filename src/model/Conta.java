@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class Conta {
     private long id;
     private String numeroConta;
@@ -9,6 +11,13 @@ public class Conta {
 
     public Conta(long id, String numeroConta, String agencia, double saldo, long clienteId) {
         this.id = id;
+        this.numeroConta = numeroConta;
+        this.agencia = agencia;
+        this.saldo = saldo;
+        this.clienteId = clienteId;
+    }
+    
+    public Conta(String numeroConta, String agencia, double saldo, long clienteId) {
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
@@ -29,4 +38,18 @@ public class Conta {
 
     public long getClienteId() { return clienteId; }
     public void setClienteId(long clienteId) { this.clienteId = clienteId; }
+    
+    
+    public static String gerarNumeroConta() {
+        Random random = new Random();
+        int parte1 = random.nextInt(900000) + 100000; // 6 dígitos
+        int parte2 = random.nextInt(90) + 10;         // 2 dígitos
+        return parte1 + "-" + parte2;
+    }
+
+    public static String gerarAgenciaAleatoria() {
+        Random random = new Random();
+        int agencia = random.nextInt(9000) + 1000; // Gera um número de 4 dígitos (1000 a 9999)
+        return String.valueOf(agencia);
+    }
 }

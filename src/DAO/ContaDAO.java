@@ -1,27 +1,28 @@
-/*package DAO;
+package DAO;
 
 import model.Conta;
-import java.sql.*;
-import java.util.Random;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ContaDAO {
-    private Connection conn;
+    private final Connection conn;
 
     public ContaDAO() {
         this.conn = ConnectionFactory.getConnection();
     }
-    
-    public ContaDAO(Connection conn) {
-    this.conn = conn;
-    }
 
-    public boolean criarConta(Conta conta) {
+/*    public boolean criarConta(long clienteId) {
         String sql = "INSERT INTO conta (numero_conta, agencia, saldo, cliente_id) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, conta.getNumeroConta());
-            stmt.setString(2, conta.getAgencia());
-            stmt.setDouble(3, conta.getSaldo());
-            stmt.setLong(4, conta.getClienteId());
+            String numeroConta = Conta.gerarNumeroConta();
+            String agencia = Conta.gerarAgenciaAleatoria();
+
+            stmt.setString(1, numeroConta);
+            stmt.setString(2, agencia);
+            stmt.setDouble(3, 0.0); // saldo inicial
+            stmt.setLong(4, clienteId);
 
             int linhasAfetadas = stmt.executeUpdate();
             return linhasAfetadas > 0;
@@ -29,7 +30,7 @@ public class ContaDAO {
             e.printStackTrace();
         }
         return false;
-    }
+    } */
 
     public Conta buscarPorClienteId(long clienteId) {
         String sql = "SELECT * FROM conta WHERE cliente_id = ?";
@@ -43,7 +44,7 @@ public class ContaDAO {
                     rs.getString("numero_conta"),
                     rs.getString("agencia"),
                     rs.getDouble("saldo"),
-                    rs.getLong("cliente_id")
+                    clienteId
                 );
             }
         } catch (SQLException e) {
@@ -52,11 +53,11 @@ public class ContaDAO {
         return null;
     }
 
-    public boolean atualizarSaldo(String numeroConta, double novoSaldo) {
-        String sql = "UPDATE conta SET saldo = ? WHERE numero_conta = ?";
+    public boolean atualizarSaldo(long contaId, double novoSaldo) {
+        String sql = "UPDATE conta SET saldo = ? WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDouble(1, novoSaldo);
-            stmt.setString(2, numeroConta);
+            stmt.setLong(2, contaId);
 
             int linhasAfetadas = stmt.executeUpdate();
             return linhasAfetadas > 0;
@@ -66,35 +67,24 @@ public class ContaDAO {
         return false;
     }
 
-    public String gerarNumeroContaAleatorio() {
-        Random random = new Random();
-        String numeroConta;
-
-        do {
-            int partePrincipal = 100000 + random.nextInt(900000); // 6 dígitos
-            int digitoVerificador = random.nextInt(10); // 0 a 9
-            numeroConta = partePrincipal + "-" + digitoVerificador;
-        } while (numeroContaExiste(numeroConta));
-
-        return numeroConta;
-    }
-
-    public String gerarAgenciaAleatoria() {
-        Random random = new Random();
-        int agencia = 1000 + random.nextInt(9000); // 4 dígitos
-        return String.valueOf(agencia);
-    }
-
-    private boolean numeroContaExiste(String numeroConta) {
-        String sql = "SELECT 1 FROM conta WHERE numero_conta = ?";
+    public Conta buscarPorNumeroConta(String numeroConta) {
+        String sql = "SELECT * FROM conta WHERE numero_conta = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, numeroConta);
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // Se existe, retorna true
+
+            if (rs.next()) {
+                return new Conta(
+                    rs.getLong("id"),
+                    numeroConta,
+                    rs.getString("agencia"),
+                    rs.getDouble("saldo"),
+                    rs.getLong("cliente_id")
+                );
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return true; // Em caso de erro, assume que existe para evitar duplicidade
+        return null;
     }
-}*/
-
+}
