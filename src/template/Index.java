@@ -12,6 +12,7 @@ import model.Sessao;
 import model.Usuario;
 import template.client.clientAccont;
 import template.client.denuncia;
+import template.adm.funcAccont;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -172,9 +173,9 @@ public class Index extends javax.swing.JFrame {
                 this.setVisible(false);
                 acont.setVisible(true);
             } else if (user instanceof Funcionario) {
-                denuncia denuncia = new denuncia();
+                funcAccont contaFuncionario = new funcAccont();
                 this.setVisible(false);
-                denuncia.setVisible(true);
+                contaFuncionario.setVisible(true);
             }
         }
         else{

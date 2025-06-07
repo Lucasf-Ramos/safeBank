@@ -44,11 +44,7 @@ public class funcAccont extends javax.swing.JFrame {
             content.add(Box.createVerticalStrut(verticalGap));
             content.add(currentCell);
             
-        }
-        
-       
-        
-        
+        } 
     }
 
     /**
