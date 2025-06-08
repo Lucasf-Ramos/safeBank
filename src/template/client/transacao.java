@@ -1,5 +1,7 @@
 package template.client;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -102,7 +104,13 @@ public class transacao extends javax.swing.JFrame {
         getContentPane().add(lbl_quantia);
         lbl_quantia.setBounds(310, 360, 300, 23);
 
+        txtfld_quantia.setText("0");
         txtfld_quantia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtfld_quantia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfld_quantiaKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtfld_quantia);
         txtfld_quantia.setBounds(310, 390, 420, 22);
 
@@ -153,6 +161,45 @@ public class transacao extends javax.swing.JFrame {
              String remetente = txtfld_remetente.getText();
              double quantia = Double.parseDouble(txtfld_quantia.getText());
              String senha = String.valueOf(txtfld_senha.getPassword());
+             
+             String myAccont = "user"; //aqui vem a conta atual, pra chegar se voce nao esta tentando mandar dinheiro para si mesmo
+             String mySenha = "123"; //senha da conta atual
+             
+             if(quantia<=0){
+                 JOptionPane.showMessageDialog(null,
+                    "A quantia deve ser maior do que zero",
+                    "Erro de transacao",
+                    JOptionPane.ERROR_MESSAGE);
+             }
+             else if(remetente.equals("") || senha.equals("")){
+                 JOptionPane.showMessageDialog(null,
+                "Todos os campos devem ser preenchidos corretamente",
+                "Erro de transacao",
+                JOptionPane.ERROR_MESSAGE);
+             }
+             else if(remetente.equals(myAccont)){
+                 JOptionPane.showMessageDialog(null,
+                "Voce não pode enviar dinheiro para sua própria conta",
+                "Erro de transacao",
+                JOptionPane.ERROR_MESSAGE);
+             }
+             else if(!senha.equals(mySenha)){
+                 JOptionPane.showMessageDialog(null,
+                "Senha incorreta",
+                "Erro de transacao",
+                JOptionPane.ERROR_MESSAGE);
+             }
+             else{
+                 // se chegar aqui esta tudo certo
+                 
+                 //açao aqui
+                 
+                 
+                clientAccont targetScreen = new clientAccont();
+                this.setVisible(false);
+                targetScreen.setVisible(true);
+             }
+             
         
         } catch (Exception e) {
         }
@@ -164,9 +211,7 @@ public class transacao extends javax.swing.JFrame {
         
         
         //retorna a tela conta
-        clientAccont targetScreen = new clientAccont();
-        this.setVisible(false);
-        targetScreen.setVisible(true);
+        
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
@@ -174,6 +219,16 @@ public class transacao extends javax.swing.JFrame {
         this.setVisible(false);
         targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void txtfld_quantiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfld_quantiaKeyTyped
+        char c = evt.getKeyChar();
+
+        // Impede letras
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return;
+        }
+    }//GEN-LAST:event_txtfld_quantiaKeyTyped
 
     /**
      * @param args the command line arguments

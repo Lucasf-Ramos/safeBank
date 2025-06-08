@@ -1,11 +1,13 @@
 package template.adm;
 
-import template.adm.transationCell;
+import Sources.transationCell;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import template.client.denunCell;
+import Sources.denunCell;
+import template.Index;
+import template.client.historico;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,16 +22,36 @@ public class verDenuncia extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(verDenuncia.class.getName());
 
+    int id;
+    
+    int denunciadoID;
+    int denuncianteID;
+    
     /**
      * Creates new form historico
      */
     public verDenuncia() {
         initComponents();
+        
 
     }
     public verDenuncia(int id) {
         initComponents();
-
+        this.id = id;
+        denunciaTitle.setText("Denuncia " + id);
+        
+        //informaçoes puxadas do banco de dados
+        int denunciadoID = 0;
+        int denuncianteID = 0;
+        String _resumo = "";
+        
+        this.denunciadoID = denunciadoID;
+        this.denuncianteID = denuncianteID;
+        
+        denunciado.setText("Denunciado: " + denunciadoID);
+        denunciante.setText("Denunciante: " + denuncianteID);
+        resumo.setText(_resumo);
+        
     }
 
     /**
@@ -108,14 +130,24 @@ public class verDenuncia extends javax.swing.JFrame {
         jSeparator3.setBounds(10, 240, 1040, 10);
 
         hitorico_denunciante.setText("ver histórico");
+        hitorico_denunciante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hitorico_denuncianteActionPerformed(evt);
+            }
+        });
         getContentPane().add(hitorico_denunciante);
         hitorico_denunciante.setBounds(910, 200, 110, 23);
 
         cancelar.setBackground(new java.awt.Color(204, 204, 204));
         cancelar.setText("Cancelar");
         cancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cancelar);
-        cancelar.setBounds(830, 660, 150, 30);
+        cancelar.setBounds(830, 540, 150, 30);
 
         resumo.setBackground(new java.awt.Color(255, 255, 255));
         resumo.setText("Resumo do acontecimento e blablabla");
@@ -133,25 +165,70 @@ public class verDenuncia extends javax.swing.JFrame {
         denunciante.setBounds(10, 200, 880, 30);
 
         historico_Denunciado.setText("ver histórico");
+        historico_Denunciado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historico_DenunciadoActionPerformed(evt);
+            }
+        });
         getContentPane().add(historico_Denunciado);
         historico_Denunciado.setBounds(910, 140, 110, 23);
 
         Aprovar.setBackground(new java.awt.Color(153, 255, 204));
         Aprovar.setText("Aprovar");
         Aprovar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Aprovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AprovarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Aprovar);
-        Aprovar.setBounds(80, 660, 150, 30);
+        Aprovar.setBounds(80, 540, 150, 30);
 
         Negar.setBackground(new java.awt.Color(255, 102, 102));
         Negar.setForeground(new java.awt.Color(255, 255, 255));
         Negar.setText("Negar");
         Negar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Negar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NegarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Negar);
-        Negar.setBounds(250, 660, 150, 30);
+        Negar.setBounds(250, 540, 150, 30);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AprovarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AprovarActionPerformed
+
+    private void NegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NegarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NegarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        funcAccont targetScreen = new funcAccont();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void historico_DenunciadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historico_DenunciadoActionPerformed
+        // TODO add your handling code here:
+        //usa o id do denunciado para entrar na tela de historico dele
+        historico targetScreen = new historico(denunciadoID, true);
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_historico_DenunciadoActionPerformed
+
+    private void hitorico_denuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitorico_denuncianteActionPerformed
+        // TODO add your handling code here:
+         //usa o id do denunciante para entrar na tela de historico dele
+         historico targetScreen = new historico(denuncianteID, true);
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_hitorico_denuncianteActionPerformed
 
     /**
      * @param args the command line arguments

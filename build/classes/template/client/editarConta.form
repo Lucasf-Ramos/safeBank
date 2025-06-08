@@ -6,6 +6,7 @@
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1080, 720]"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -81,7 +82,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Novo nome:"/>
+        <Property name="text" type="java.lang.String" value="Novo Nome:"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
@@ -91,7 +92,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_user1">
+    <Component class="javax.swing.JLabel" name="lbl_senha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee" size="18" style="0"/>
@@ -105,7 +106,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="310" width="300" height="-1"/>
+          <AbsoluteConstraints x="310" y="320" width="300" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -119,11 +120,11 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="340" width="420" height="-1"/>
+          <AbsoluteConstraints x="310" y="350" width="420" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_senhaantiga">
+    <Component class="javax.swing.JLabel" name="lbl_repsenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee" size="18" style="0"/>
@@ -131,13 +132,13 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Antiga senha:"/>
+        <Property name="text" type="java.lang.String" value="Senha Antiga:"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="400" width="300" height="-1"/>
+          <AbsoluteConstraints x="310" y="390" width="300" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -151,7 +152,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="310" y="430" width="420" height="-1"/>
+          <AbsoluteConstraints x="310" y="420" width="420" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -176,7 +177,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="430" y="490" width="180" height="30"/>
+          <AbsoluteConstraints x="430" y="550" width="180" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -201,7 +202,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="430" y="530" width="180" height="30"/>
+          <AbsoluteConstraints x="430" y="590" width="180" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -214,7 +215,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Editar Conta"/>
+        <Property name="text" type="java.lang.String" value="Criar Conta"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>

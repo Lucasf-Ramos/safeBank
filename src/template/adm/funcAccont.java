@@ -1,11 +1,11 @@
 package template.adm;
 
-import template.adm.transationCell;
+import Sources.transationCell;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import template.client.denunCell;
+import Sources.denunCell;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -23,8 +23,13 @@ public class funcAccont extends javax.swing.JFrame {
     /**
      * Creates new form historico
      */
+    public static funcAccont funcScreen;
+    
     public funcAccont() {
         initComponents();
+        funcScreen = this;
+        
+        
         String clienteName = "usuário";
         hello.setText("Olá, "+ clienteName);
         
@@ -32,7 +37,7 @@ public class funcAccont extends javax.swing.JFrame {
         
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         
-        denunCell cell[] = {new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 1)};
+        denunCell cell[] = {new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 2),new denunCell("000", "02/02/2002", 3)};
         //denunciado: //data //id:
         
         

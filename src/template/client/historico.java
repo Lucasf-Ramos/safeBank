@@ -4,7 +4,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import template.adm.transationCell;
+import Sources.transationCell;
+import template.adm.funcAccont;
 import template.client.clientAccont;
 
 /*
@@ -23,14 +24,36 @@ public class historico extends javax.swing.JFrame {
     /**
      * Creates new form historico
      */
+    boolean isFuncAccont = false; 
+    
+    transationCell cell[]; //armazena as celulas de transaçao
     public historico() {
         initComponents();
         
+       transationCell _cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100)}; // meio campo pra criar as celulas e depois armazenar elas. Vai precisar de alguma logica pra puxar essas informaçoes do banco de dados de forma volatil
+       cell = _cell;
+       
+        generateGrid();
+    }
+     public historico(int id, boolean isFunc) {
+        initComponents();
+        //usa eses pra puaxar informaçoes de um ID expecifico
+        
+        
+       transationCell _cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100)}; // meio campo pra criar as celulas e depois armazenar elas. Vai precisar de alguma logica pra puxar essas informaçoes do banco de dados de forma volatil
+       cell = _cell;
+       isFuncAccont = isFunc;
+       //isFunc verfica se o usuario que esta entrando é um funcionario ou um cliente
+       
+        generateGrid();
+    }
+    
+    void generateGrid(){
         int verticalGap = 10; // gap entre as celulas
         
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         
-        transationCell cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell(), new transationCell()};
+        
         //para: // De: // Data: // Cod: // quantia 
         //essa é a sequencia para criar um campo ja preenchido, quando entrar aqui so puxa uma lista do banco de dados com essas informaçoes
         
@@ -44,10 +67,6 @@ public class historico extends javax.swing.JFrame {
             content.add(currentCell);
             
         }
-        
-       
-        
-        
     }
 
     /**
@@ -120,9 +139,20 @@ public class historico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
-        clientAccont targetScreen = new clientAccont();
-        this.setVisible(false);
-        targetScreen.setVisible(true);
+        
+        
+        
+        if(!isFuncAccont){
+            clientAccont targetScreen = new clientAccont();
+            this.setVisible(false);
+            targetScreen.setVisible(true);
+        }
+        else{
+            funcAccont targetScreen = new funcAccont();
+            this.setVisible(false);
+            targetScreen.setVisible(true);
+        }
+       
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     /**

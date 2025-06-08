@@ -1,5 +1,7 @@
 package template.client;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -108,6 +110,16 @@ public class denuncia extends javax.swing.JFrame {
         lbl_data.setBounds(310, 460, 300, 23);
 
         txtfld_data.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtfld_data.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtfld_dataPropertyChange(evt);
+            }
+        });
+        txtfld_data.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtfld_dataKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtfld_data);
         txtfld_data.setBounds(310, 490, 130, 22);
 
@@ -147,11 +159,22 @@ public class denuncia extends javax.swing.JFrame {
         String resumo = txtfld_resumo.getText();
         String data = txtfld_data.getText();
         
-        //faz o processo aqui
+        if(!conta.equals("") && !resumo.equals("") && !data.equals("") && data.length() >= 10 ){
+            //faz o processo aqui
+            
+            clientAccont targetScreen = new clientAccont();
+            this.setVisible(false);
+            targetScreen.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,
+                "Todos os campos devem ser preenchidos corretamente",
+                "Erro de transacao",
+                JOptionPane.ERROR_MESSAGE);
+        }
         
-        clientAccont targetScreen = new clientAccont();
-        this.setVisible(false);
-        targetScreen.setVisible(true);
+        
+        
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
@@ -159,6 +182,39 @@ public class denuncia extends javax.swing.JFrame {
         this.setVisible(false);
         targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void txtfld_dataPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtfld_dataPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfld_dataPropertyChange
+
+    private void txtfld_dataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfld_dataKeyTyped
+        // TODO add your handling code here:
+        
+       txtfld_data.setTransferHandler(null);
+        
+        char[] format = {' ',' ', '/', ' ',' ','/',' ',' ',' '};
+        char c = evt.getKeyChar();
+
+        // Impede letras
+        if (!Character.isDigit(c)) {
+            evt.consume();
+            return;
+        }
+
+        String texto = txtfld_data.getText();
+
+        // Impede mais de 10 caracteres (dd/mm/aaaa)
+        if (texto.length() >= 10) {
+            evt.consume();
+            return;
+        }
+
+        // Adiciona '/' automaticamente nas posições 2 e 5
+        if (texto.length() == 2 || texto.length() == 5) {
+            txtfld_data.setText(texto + "/");
+        }
+        
+    }//GEN-LAST:event_txtfld_dataKeyTyped
 
     /**
      * @param args the command line arguments

@@ -13,6 +13,7 @@ import model.Usuario;
 import template.client.clientAccont;
 import template.client.denuncia;
 import template.adm.funcAccont;
+import template.client.criarConta;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -161,33 +162,59 @@ public class Index extends javax.swing.JFrame {
         String email = txtfld_user.getText();
         String senha = String.valueOf(txtfld_senha.getPassword());
         
-        UsuarioDAO dao = new UsuarioDAO();
-        
-        Usuario user = dao.fazerLogin(email, senha);
-
-        if (user != null) {
-            Sessao.setUsuario(user);
+        //verifica se todos os campos estao preenchidos
+        if(email.equals("") || senha.equals("") || !email.contains("@")){
             
-            if (user instanceof Cliente) {
-                clientAccont acont = new clientAccont();
-                this.setVisible(false);
-                acont.setVisible(true);
-            } else if (user instanceof Funcionario) {
-                funcAccont contaFuncionario = new funcAccont();
-                this.setVisible(false);
-                contaFuncionario.setVisible(true);
-            }
-        }
-        else{
+          
+            
             JOptionPane.showMessageDialog(null,
-                "Email ou senha inválidos!",
+                "Email e/ou senha inválidos",
                 "Erro de login",
                 JOptionPane.ERROR_MESSAGE);
+            
+            return;
         }
+        
+        //Luc: Adicionei um try cath aqui pra não ficar crashando em erro quando nao conseguir conectar no banco
+        try {
+            
+            UsuarioDAO dao = new UsuarioDAO();
+        
+            Usuario user = dao.fazerLogin(email, senha);
+
+            if (user != null) {
+                Sessao.setUsuario(user);
+
+                if (user instanceof Cliente) {
+                    clientAccont acont = new clientAccont();
+                    this.setVisible(false);
+                    acont.setVisible(true);
+                } else if (user instanceof Funcionario) {
+                    funcAccont contaFuncionario = new funcAccont();
+                    this.setVisible(false);
+                    contaFuncionario.setVisible(true);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null,
+                    "Email ou senha inválidos!",
+                    "Erro de login",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao logar, tente de novo mais tarde",
+                    "Erro de login",
+                    JOptionPane.ERROR_MESSAGE);
+            
+        }
+       
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     private void btn_CriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CriarContaActionPerformed
-        // Logica pra ir pra tela de cadastro de cliente
+        criarConta targetScreen = new criarConta();
+        this.setVisible(false);
+        targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_CriarContaActionPerformed
 
     /**

@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package template.client;
+package Sources;
+
+import template.adm.funcAccont;
+import template.adm.verDenuncia;
 
 /**
  *
@@ -14,6 +17,7 @@ public class denunCell extends javax.swing.JPanel {
      * Creates new form transationCell
      */
     int id;
+    funcAccont parent;
     
     public denunCell() {
         initComponents();
@@ -23,6 +27,7 @@ public class denunCell extends javax.swing.JPanel {
         denunciado.setText("Para: " + _denunciado);
         data.setText(_data);
         this.id = id;
+        parent = funcAccont.funcScreen;
         
     }
     
@@ -51,6 +56,11 @@ public class denunCell extends javax.swing.JPanel {
         data.setText("data: 00/00/0000");
 
         verMais.setText("ver mais");
+        verMais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verMaisActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,6 +86,12 @@ public class denunCell extends javax.swing.JPanel {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void verMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMaisActionPerformed
+        verDenuncia targetScreen = new verDenuncia(id);
+        parent.setVisible(false);
+        targetScreen.setVisible(true);
+    }//GEN-LAST:event_verMaisActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
