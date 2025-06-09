@@ -12,14 +12,14 @@ import template.Index;
  *
  * @author Natanael-PC
  */
-public class criarConta extends javax.swing.JFrame {
+public class cadastroCliente extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(criarConta.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(cadastroCliente.class.getName());
 
     /**
      * Creates new form editarConta
      */
-    public criarConta() {
+    public cadastroCliente() {
         initComponents();
         
        
@@ -51,7 +51,6 @@ public class criarConta extends javax.swing.JFrame {
         txtfld_email = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -76,7 +75,7 @@ public class criarConta extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 23);
+        lbl_user.setBounds(310, 240, 300, 24);
 
         lbl_user1.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user1.setForeground(new java.awt.Color(102, 102, 102));
@@ -84,7 +83,7 @@ public class criarConta extends javax.swing.JFrame {
         lbl_user1.setToolTipText("");
         lbl_user1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user1);
-        lbl_user1.setBounds(310, 360, 300, 23);
+        lbl_user1.setBounds(310, 360, 300, 24);
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senha);
@@ -96,7 +95,7 @@ public class criarConta extends javax.swing.JFrame {
         lbl_senhaantiga.setToolTipText("");
         lbl_senhaantiga.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_senhaantiga);
-        lbl_senhaantiga.setBounds(310, 420, 300, 23);
+        lbl_senhaantiga.setBounds(310, 420, 300, 24);
 
         txtfld_senhaConfirm.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senhaConfirm);
@@ -131,11 +130,11 @@ public class criarConta extends javax.swing.JFrame {
         Logotipo.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         Logotipo.setForeground(new java.awt.Color(102, 102, 102));
         Logotipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logotipo.setText("Editar Conta");
+        Logotipo.setText("Cadastro Cliente");
         Logotipo.setToolTipText("");
         Logotipo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(Logotipo);
-        Logotipo.setBounds(380, 90, 300, 78);
+        Logotipo.setBounds(380, 90, 360, 78);
         getContentPane().add(_______);
         _______.setBounds(80, 180, 930, 10);
 
@@ -145,7 +144,7 @@ public class criarConta extends javax.swing.JFrame {
         lbl_email.setToolTipText("");
         lbl_email.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_email);
-        lbl_email.setBounds(310, 300, 300, 23);
+        lbl_email.setBounds(310, 300, 300, 24);
 
         txtfld_email.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_email);
@@ -209,7 +208,7 @@ public class criarConta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new criarConta().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new cadastroCliente().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

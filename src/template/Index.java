@@ -13,7 +13,7 @@ import model.Usuario;
 import template.client.clientAccont;
 import template.client.denuncia;
 import template.adm.funcAccont;
-import template.client.criarConta;
+import template.client.cadastroCliente;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -212,7 +212,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EntrarActionPerformed
 
     private void btn_CriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CriarContaActionPerformed
-        criarConta targetScreen = new criarConta();
+        cadastroCliente targetScreen = new cadastroCliente();
         this.setVisible(false);
         targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_CriarContaActionPerformed

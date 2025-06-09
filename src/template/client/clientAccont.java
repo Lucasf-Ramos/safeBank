@@ -25,7 +25,7 @@ public class clientAccont extends javax.swing.JFrame {
         String clienteName = "usuário";
         String conta = "000";
         String agencia = "000";
-        String acConcat = "Conta: "+ conta+"   |   Agência: "+ conta; //concatenaçao entre conta e agencia
+        String acConcat = "Conta: "+ conta+"   |   Agência: "+ agencia; //concatenaçao entre conta e agencia
         
         hello.setText("Olá, "+ clienteName);
         dados.setText(acConcat);

@@ -50,7 +50,6 @@ public class editarConta extends javax.swing.JFrame {
         _______ = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -75,7 +74,7 @@ public class editarConta extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 23);
+        lbl_user.setBounds(310, 240, 300, 24);
 
         lbl_senha.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_senha.setForeground(new java.awt.Color(102, 102, 102));
@@ -130,7 +129,7 @@ public class editarConta extends javax.swing.JFrame {
         Logotipo.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         Logotipo.setForeground(new java.awt.Color(102, 102, 102));
         Logotipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logotipo.setText("Criar Conta");
+        Logotipo.setText("Editar Conta");
         Logotipo.setToolTipText("");
         Logotipo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(Logotipo);
