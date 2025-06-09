@@ -56,6 +56,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         txtfld_email = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -80,7 +81,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 24);
+        lbl_user.setBounds(310, 240, 300, 23);
 
         lbl_user1.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user1.setForeground(new java.awt.Color(102, 102, 102));
@@ -88,7 +89,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_user1.setToolTipText("");
         lbl_user1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user1);
-        lbl_user1.setBounds(310, 360, 300, 24);
+        lbl_user1.setBounds(310, 360, 300, 23);
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senha);
@@ -100,7 +101,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_senhaantiga.setToolTipText("");
         lbl_senhaantiga.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_senhaantiga);
-        lbl_senhaantiga.setBounds(310, 420, 300, 24);
+        lbl_senhaantiga.setBounds(310, 420, 300, 23);
 
         txtfld_senhaConfirm.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senhaConfirm);
@@ -149,7 +150,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_email.setToolTipText("");
         lbl_email.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_email);
-        lbl_email.setBounds(310, 300, 300, 24);
+        lbl_email.setBounds(310, 300, 300, 23);
 
         txtfld_email.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_email);

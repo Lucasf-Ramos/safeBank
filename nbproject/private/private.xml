@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Projetos/safeBank/src/DAO/ClienteDAO.java</file>
-            <file>file:/C:/Projetos/safeBank/src/DAO/ContaDAO.java</file>
-            <file>file:/C:/Projetos/safeBank/src/DAO/UsuarioDAO.java</file>
-            <file>file:/C:/Projetos/safeBank/src/template/client/cadastroCliente.java</file>
-            <file>file:/C:/Projetos/safeBank/src/model/Cliente.java</file>
-            <file>file:/C:/Projetos/safeBank/src/model/Conta.java</file>
-            <file>file:/C:/Projetos/safeBank/src/model/Usuario.java</file>
+            <file>file:/C:/Users/Natanael-PC/Documents/NetBeansProjects/safeBank/src/Sources/denunCell.java</file>
+            <file>file:/C:/Users/Natanael-PC/Documents/NetBeansProjects/safeBank/src/template/client/historico.java</file>
+            <file>file:/C:/Users/Natanael-PC/Documents/NetBeansProjects/safeBank/src/template/adm/funcAccont.java</file>
+            <file>file:/C:/Users/Natanael-PC/Documents/NetBeansProjects/safeBank/src/template/adm/verDenuncia.java</file>
+            <file>file:/C:/Users/Natanael-PC/Documents/NetBeansProjects/safeBank/src/template/client/cadastroCliente.java</file>
         </group>
     </open-files>
 </project-private>
