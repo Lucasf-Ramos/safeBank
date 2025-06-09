@@ -13,25 +13,6 @@ public class ContaDAO {
         this.conn = ConnectionFactory.getConnection();
     }
 
-/*    public boolean criarConta(long clienteId) {
-        String sql = "INSERT INTO conta (numero_conta, agencia, saldo, cliente_id) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            String numeroConta = Conta.gerarNumeroConta();
-            String agencia = Conta.gerarAgenciaAleatoria();
-
-            stmt.setString(1, numeroConta);
-            stmt.setString(2, agencia);
-            stmt.setDouble(3, 0.0); // saldo inicial
-            stmt.setLong(4, clienteId);
-
-            int linhasAfetadas = stmt.executeUpdate();
-            return linhasAfetadas > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    } */
-
     public Conta buscarPorClienteId(long clienteId) {
         String sql = "SELECT * FROM conta WHERE cliente_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {

@@ -1,6 +1,10 @@
 package template.client;
 
+import DAO.ClienteDAO;
 import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Conta;
+import model.Usuario;
 import template.Index;
 
 /*
@@ -163,7 +167,6 @@ public class cadastroCliente extends javax.swing.JFrame {
         if(!nome.equals("") && !email.equals("") && !senha.equals("") && senha.equals(senhaRep)){
             //checagem se nada é vazio e se a senha é igual a senha de confirmaçao
             
-            
             Index targetScreen = new Index();
             this.setVisible(false);
             targetScreen.setVisible(true);
@@ -174,10 +177,29 @@ public class cadastroCliente extends javax.swing.JFrame {
                 "Erro de criar conta",
                 JOptionPane.ERROR_MESSAGE);
         }
-
-       
         
         
+     // Usuario usuario = new Usuario(nome, email, senha);
+     
+        Cliente cliente = new Cliente(nome, email, senha, senhaRep);
+        
+        ClienteDAO dao = new ClienteDAO();
+        
+        boolean sucesso = dao.cadastrarClienteComConta(cliente);
+        
+        if (sucesso) {
+        JOptionPane.showMessageDialog(null,
+            "Cliente cadastrado com sucesso",
+            "Sucesso",
+            JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+        new Index().setVisible(true);
+        } else {
+        JOptionPane.showMessageDialog(null,
+            "Erro ao cadastrar o cliente.",
+            "Erro",
+            JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
