@@ -3,7 +3,6 @@ package DAO;
 import model.Conta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ContaDAO {
@@ -13,7 +12,27 @@ public class ContaDAO {
         this.conn = ConnectionFactory.getConnection();
     }
 
-    public Conta buscarPorClienteId(long clienteId) {
+    public boolean criarConta(Conta conta) {
+    String sql = "INSERT INTO conta (numero_conta, agencia, saldo, cliente_id) VALUES (?, ?, ?, ?)";
+
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, conta.getNumeroConta());
+        stmt.setString(2, conta.getAgencia());
+        stmt.setDouble(3, conta.getSaldo());
+        stmt.setLong(4, conta.getClienteId());
+
+        int rows = stmt.executeUpdate();
+        return rows > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+    
+   /* public Conta buscarPorClienteId(long clienteId) {
         String sql = "SELECT * FROM conta WHERE cliente_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, clienteId);
@@ -32,7 +51,7 @@ public class ContaDAO {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
     public boolean atualizarSaldo(long contaId, double novoSaldo) {
         String sql = "UPDATE conta SET saldo = ? WHERE id = ?";
@@ -48,7 +67,7 @@ public class ContaDAO {
         return false;
     }
 
-    public Conta buscarPorNumeroConta(String numeroConta) {
+/*    public Conta buscarPorNumeroConta(String numeroConta) {
         String sql = "SELECT * FROM conta WHERE numero_conta = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, numeroConta);
@@ -67,5 +86,5 @@ public class ContaDAO {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

@@ -7,38 +7,27 @@ public class Conta {
     private String numeroConta;
     private String agencia;
     private double saldo;
-    private long clienteId;
+    private Cliente cliente;
 
-    public Conta(long id, String numeroConta, String agencia, double saldo, long clienteId) {
-        this.id = id;
+    public Conta(String numeroConta, String agencia, double saldo, Cliente cliente) {
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
-        this.clienteId = clienteId;
-    }
-    
-    public Conta(String numeroConta, String agencia, double saldo, long clienteId) {
-        this.numeroConta = numeroConta;
-        this.agencia = agencia;
-        this.saldo = saldo;
-        this.clienteId = clienteId;
+        this.cliente = cliente;
     }
 
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
+    public long getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
-    public String getNumeroConta() { return numeroConta; }
-    public void setNumeroConta(String numeroConta) { this.numeroConta = numeroConta; }
+    public String getNumeroConta() {return numeroConta;}
 
-    public String getAgencia() { return agencia; }
-    public void setAgencia(String agencia) { this.agencia = agencia; }
+    public String getAgencia() {return agencia;}
 
-    public double getSaldo() { return saldo; }
-    public void setSaldo(double saldo) { this.saldo = saldo; }
+    public double getSaldo() {return saldo;}
 
-    public long getClienteId() { return clienteId; }
-    public void setClienteId(long clienteId) { this.clienteId = clienteId; }
-    
+    public Cliente getCliente() {return cliente;}
+    public long getClienteId() {return cliente.getClienteId();}
+
     
     public static String gerarNumeroConta() {
         Random random = new Random();
