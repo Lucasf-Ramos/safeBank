@@ -6,7 +6,7 @@ public class Conta {
     private long id;
     private String numeroConta;
     private String agencia;
-    private double saldo;
+    private double saldo = 100;
     private Cliente cliente;
 
     public Conta(String numeroConta, String agencia, double saldo, Cliente cliente) {
@@ -15,18 +15,25 @@ public class Conta {
         this.saldo = saldo;
         this.cliente = cliente;
     }
-
+    
+    
     public long getId() {return id;}
     public void setId(int id) {this.id = id;}
 
     public String getNumeroConta() {return numeroConta;}
+    public void setNumeroConta(String numeroConta) {this.numeroConta = numeroConta;}
 
     public String getAgencia() {return agencia;}
+    public void setAgencia(String agencia) {this.agencia = agencia;}
 
     public double getSaldo() {return saldo;}
+    public void setSaldo(double saldo) {this.saldo = saldo;}
 
     public Cliente getCliente() {return cliente;}
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
+    
     public long getClienteId() {return cliente.getClienteId();}
+    public long setClienteId(long clienteId) {return clienteId;}
 
     
     public static String gerarNumeroConta() {

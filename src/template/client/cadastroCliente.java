@@ -1,10 +1,11 @@
 package template.client;
 
 import DAO.ClienteDAO;
+import DAO.ContaDAO;
+import DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Conta;
-import model.Usuario;
 import template.Index;
 
 /*
@@ -164,21 +165,56 @@ public class cadastroCliente extends javax.swing.JFrame {
         String senha = String.valueOf(txtfld_senha.getPassword());
         String senhaRep = String.valueOf(txtfld_senhaConfirm.getPassword());
         
-        if(!nome.equals("") && !email.equals("") && !senha.equals("") && senha.equals(senhaRep)){
-            //checagem se nada é vazio e se a senha é igual a senha de confirmaçao
-            
+    if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty() && senha.equals(senhaRep)) {
+        try {
+            // 1. Criar objeto Cliente com dados iniciais
+            Cliente cliente = new Cliente(0, nome, email, senha, 0, "Endereço padrão"); // ou adicione um campo para o endereço
+
+            // 2. Inserir usuário e obter usuario_id
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            int usuarioId = usuarioDAO.inserirUsuario(cliente);
+            if (usuarioId == -1) {
+                throw new Exception("Falha ao inserir usuário.");
+            }
+
+            // 3. Inserir cliente e obter cliente_id
+            ClienteDAO clienteDAO = new ClienteDAO();
+            int clienteId = clienteDAO.inserirCliente(cliente, usuarioId);
+            if (clienteId == -1) {
+                throw new Exception("Falha ao inserir cliente.");
+            }
+
+            // 4. Criar conta bancária automaticamente
+            String numeroConta = Conta.gerarNumeroConta();
+            String agencia = Conta.gerarAgenciaAleatoria();
+            double saldoInicial = 100.0;
+
+            Conta conta = new Conta(numeroConta, agencia, saldoInicial, cliente);
+
+            ContaDAO contaDAO = new ContaDAO();
+            boolean contaCriada = contaDAO.criarConta(conta);
+            if (!contaCriada) {
+                throw new Exception("Falha ao criar conta.");
+            }
+
+            // 5. Exibir mensagem e redirecionar
+            JOptionPane.showMessageDialog(null, "Cliente e conta cadastrados com sucesso!");
             Index targetScreen = new Index();
             this.setVisible(false);
             targetScreen.setVisible(true);
-        }
-        else{
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
-                "Todos os campos devem ser preenchidos corretamente",
+                "Erro ao cadastrar cliente: " + e.getMessage(),
+                "Erro de Cadastro",
+                JOptionPane.ERROR_MESSAGE);
+        }
+        } else {
+        JOptionPane.showMessageDialog(null,
+                "Todos os campos devem ser preenchidos corretamente e as senhas devem coincidir.",
                 "Erro de criar conta",
                 JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed

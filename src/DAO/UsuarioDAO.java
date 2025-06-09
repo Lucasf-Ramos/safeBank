@@ -12,7 +12,7 @@ public class UsuarioDAO {
         this.conn = ConnectionFactory.getConnection();
     }
     
-    private int inserirUsuario(Cliente cliente) {
+    public int inserirUsuario(Cliente cliente) {
     String sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES (?, ?, ?, ?)";
 
     try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
