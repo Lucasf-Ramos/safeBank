@@ -50,6 +50,7 @@ public class editarConta extends javax.swing.JFrame {
         _______ = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 

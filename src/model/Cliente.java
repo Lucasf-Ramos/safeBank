@@ -1,5 +1,7 @@
 package model;
 
+import model.enums.TipoUsuario;
+
 
 public class Cliente extends Usuario {
    
@@ -7,13 +9,8 @@ public class Cliente extends Usuario {
     protected String endereco;
     
     public Cliente(long id, String nome, String email, String senha, long clienteId, String endereco) {
-        super(id, nome, email, senha);
+        super(id, nome, email, senha, TipoUsuario.cliente);
         this.clienteId = clienteId;
-        this.endereco = endereco;
-    }
-
-    public Cliente(String nome, String email, String senha, String endereco) {
-        super(0, nome, email, senha);
         this.endereco = endereco;
     }
 

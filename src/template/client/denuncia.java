@@ -79,7 +79,7 @@ public class denuncia extends javax.swing.JFrame {
         lbl_resumo.setToolTipText("");
         lbl_resumo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_resumo);
-        lbl_resumo.setBounds(310, 320, 300, 23);
+        lbl_resumo.setBounds(310, 320, 300, 24);
 
         txtfld_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_user);
@@ -91,7 +91,7 @@ public class denuncia extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 23);
+        lbl_user.setBounds(310, 240, 300, 24);
 
         txtfld_resumo.setColumns(20);
         txtfld_resumo.setRows(5);
@@ -107,7 +107,7 @@ public class denuncia extends javax.swing.JFrame {
         lbl_data.setToolTipText("");
         lbl_data.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_data);
-        lbl_data.setBounds(310, 460, 300, 23);
+        lbl_data.setBounds(310, 460, 300, 24);
 
         txtfld_data.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtfld_data.addPropertyChangeListener(new java.beans.PropertyChangeListener() {

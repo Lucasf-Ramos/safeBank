@@ -10,12 +10,12 @@ public class ClienteDAO {
         this.conn = ConnectionFactory.getConnection();
     }
 
-    public int inserirCliente(Cliente cliente, int usuarioId) {
+    public int inserirCliente(Cliente cliente) {
     String sql = "INSERT INTO cliente (usuario_id, endereco) VALUES (?, ?)";
 
     try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        stmt.setInt(1, usuarioId);
+        stmt.setLong(1, cliente.getId());
         stmt.setString(2, cliente.getEndereco());
 
         int rowsAffected = stmt.executeUpdate();

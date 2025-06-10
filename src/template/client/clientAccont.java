@@ -1,5 +1,10 @@
 package template.client;
 
+import model.Cliente;
+import model.Sessao;
+import DAO.ContaDAO;
+import model.Conta;
+import template.Index;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -22,18 +27,14 @@ public class clientAccont extends javax.swing.JFrame {
         
         initComponents();
         
-        String clienteName = "usuário";
-        String conta = "000";
-        String agencia = "000";
-        String acConcat = "Conta: "+ conta+"   |   Agência: "+ agencia; //concatenaçao entre conta e agencia
+        Cliente cliente = (Cliente)Sessao.getUsuario();
         
-        hello.setText("Olá, "+ clienteName);
-        dados.setText(acConcat);
+        ContaDAO contaDao = new ContaDAO();
+        Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId());
         
-        double saldo = 100;
-        txt_saldo.setText("Saldo: R$"+ saldo);
-        
-        
+        hello.setText("Olá, " + cliente.getNome());
+        dados.setText("Conta: " + conta.getNumeroConta() + "   |   Agência: " + conta.getAgencia());
+        txt_saldo.setText("Saldo: R$" + conta.getSaldo());
     }
 
     /**
@@ -53,8 +54,9 @@ public class clientAccont extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btn_edit = new javax.swing.JButton();
         btn_transf = new javax.swing.JButton();
-        btn_hist = new javax.swing.JButton();
+        btn_deslogar = new javax.swing.JButton();
         btn_denun = new javax.swing.JButton();
+        btn_hist1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 720));
@@ -70,7 +72,7 @@ public class clientAccont extends javax.swing.JFrame {
         dados.setToolTipText("");
         dados.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         header.add(dados);
-        dados.setBounds(20, 110, 300, 23);
+        dados.setBounds(20, 110, 300, 24);
 
         hello.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         hello.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,15 +121,15 @@ public class clientAccont extends javax.swing.JFrame {
         getContentPane().add(btn_transf);
         btn_transf.setBounds(70, 280, 300, 70);
 
-        btn_hist.setText("<html><h1>Histórico");
-        btn_hist.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_hist.addActionListener(new java.awt.event.ActionListener() {
+        btn_deslogar.setText("<html><h2>Deslogar");
+        btn_deslogar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_deslogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_histActionPerformed(evt);
+                btn_deslogarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_hist);
-        btn_hist.setBounds(380, 280, 300, 70);
+        getContentPane().add(btn_deslogar);
+        btn_deslogar.setBounds(970, 420, 80, 40);
 
         btn_denun.setText("<html><h1>Denunciar");
         btn_denun.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -138,6 +140,16 @@ public class clientAccont extends javax.swing.JFrame {
         });
         getContentPane().add(btn_denun);
         btn_denun.setBounds(690, 280, 300, 70);
+
+        btn_hist1.setText("<html><h1>Histórico");
+        btn_hist1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_hist1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hist1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_hist1);
+        btn_hist1.setBounds(380, 280, 300, 70);
 
         pack();
         setLocationRelativeTo(null);
@@ -159,19 +171,26 @@ public class clientAccont extends javax.swing.JFrame {
         targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_transfActionPerformed
 
-    private void btn_histActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_histActionPerformed
-       historico targetScreen = new historico();
-       
+    private void btn_deslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deslogarActionPerformed
+       Sessao.encerrar();
+       Index targetScreen = new Index();
        this.setVisible(false);
-        targetScreen.setVisible(true);
-    }//GEN-LAST:event_btn_histActionPerformed
+       targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_deslogarActionPerformed
 
     private void btn_denunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_denunActionPerformed
        denuncia targetScreen = new denuncia();
        
        this.setVisible(false);
-        targetScreen.setVisible(true);
+       targetScreen.setVisible(true);
     }//GEN-LAST:event_btn_denunActionPerformed
+
+    private void btn_hist1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hist1ActionPerformed
+       historico targetScreen = new historico();
+       
+       this.setVisible(false);
+       targetScreen.setVisible(true);
+    }//GEN-LAST:event_btn_hist1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +219,9 @@ public class clientAccont extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_denun;
+    private javax.swing.JButton btn_deslogar;
     private javax.swing.JButton btn_edit;
-    private javax.swing.JButton btn_hist;
+    private javax.swing.JButton btn_hist1;
     private javax.swing.JButton btn_transf;
     private javax.swing.JLabel dados;
     private javax.swing.JLabel gradient;

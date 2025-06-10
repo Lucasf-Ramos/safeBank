@@ -6,6 +6,9 @@ import DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Conta;
+import model.Sessao;
+import model.Usuario;
+import model.enums.TipoUsuario;
 import template.Index;
 
 /*
@@ -81,7 +84,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 23);
+        lbl_user.setBounds(310, 240, 300, 24);
 
         lbl_user1.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user1.setForeground(new java.awt.Color(102, 102, 102));
@@ -89,7 +92,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_user1.setToolTipText("");
         lbl_user1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user1);
-        lbl_user1.setBounds(310, 360, 300, 23);
+        lbl_user1.setBounds(310, 360, 300, 24);
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senha);
@@ -101,7 +104,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_senhaantiga.setToolTipText("");
         lbl_senhaantiga.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_senhaantiga);
-        lbl_senhaantiga.setBounds(310, 420, 300, 23);
+        lbl_senhaantiga.setBounds(310, 420, 300, 24);
 
         txtfld_senhaConfirm.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_senhaConfirm);
@@ -150,7 +153,7 @@ public class cadastroCliente extends javax.swing.JFrame {
         lbl_email.setToolTipText("");
         lbl_email.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_email);
-        lbl_email.setBounds(310, 300, 300, 23);
+        lbl_email.setBounds(310, 300, 300, 24);
 
         txtfld_email.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_email);
@@ -166,55 +169,52 @@ public class cadastroCliente extends javax.swing.JFrame {
         String senha = String.valueOf(txtfld_senha.getPassword());
         String senhaRep = String.valueOf(txtfld_senhaConfirm.getPassword());
         
-    if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty() && senha.equals(senhaRep)) {
-        try {
-            // 1. Criar objeto Cliente com dados iniciais
-            Cliente cliente = new Cliente(0, nome, email, senha, 0, "Endereço padrão"); // ou adicione um campo para o endereço
+        if (!nome.isEmpty() && !email.isEmpty() && !senha.isEmpty() && senha.equals(senhaRep)) {
+            try {
+                Usuario usuario = new Usuario(0, nome, email, senha, TipoUsuario.cliente); // ou adicione um campo para o endereço
 
-            // 2. Inserir usuário e obter usuario_id
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            int usuarioId = usuarioDAO.inserirUsuario(cliente);
-            if (usuarioId == -1) {
-                throw new Exception("Falha ao inserir usuário.");
+                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                int usuarioId = usuarioDAO.inserirUsuario(usuario);
+                if (usuarioId == -1) {
+                    throw new Exception("Falha ao inserir usuário.");
+                }
+                usuario.setId(usuarioId);
+
+                Cliente cliente = new Cliente(usuarioId, nome, email, senha, 0, "Rua Mooca"); // ou adicione um campo para o endereço
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                int clienteId = clienteDAO.inserirCliente(cliente);
+                if (clienteId == -1) {
+                    throw new Exception("Falha ao inserir cliente.");
+                }
+                cliente.setClienteId(clienteId);
+
+                Conta conta = new Conta(0, Conta.gerarNumeroConta(), Conta.gerarAgenciaAleatoria(), 500, cliente);
+
+                ContaDAO contaDAO = new ContaDAO();
+                boolean contaCriada = contaDAO.criarConta(conta);
+                if (!contaCriada) {
+                    throw new Exception("Falha ao criar conta.");
+                }
+
+                JOptionPane.showMessageDialog(null, "Cliente e conta cadastrados com sucesso!");
+                Sessao.setUsuario(usuario);
+                clientAccont targetScreen = new clientAccont();
+                this.setVisible(false);
+                targetScreen.setVisible(true);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                    "Erro ao cadastrar cliente: " + e.getMessage(),
+                    "Erro de Cadastro",
+                    JOptionPane.ERROR_MESSAGE);
             }
-
-            // 3. Inserir cliente e obter cliente_id
-            ClienteDAO clienteDAO = new ClienteDAO();
-            int clienteId = clienteDAO.inserirCliente(cliente, usuarioId);
-            if (clienteId == -1) {
-                throw new Exception("Falha ao inserir cliente.");
-            }
-
-            // 4. Criar conta bancária automaticamente
-            String numeroConta = Conta.gerarNumeroConta();
-            String agencia = Conta.gerarAgenciaAleatoria();
-            double saldoInicial = 100.0;
-
-            Conta conta = new Conta(numeroConta, agencia, saldoInicial, cliente);
-
-            ContaDAO contaDAO = new ContaDAO();
-            boolean contaCriada = contaDAO.criarConta(conta);
-            if (!contaCriada) {
-                throw new Exception("Falha ao criar conta.");
-            }
-
-            // 5. Exibir mensagem e redirecionar
-            JOptionPane.showMessageDialog(null, "Cliente e conta cadastrados com sucesso!");
-            Index targetScreen = new Index();
-            this.setVisible(false);
-            targetScreen.setVisible(true);
-
-        } catch (Exception e) {
+        } 
+        else {
             JOptionPane.showMessageDialog(null,
-                "Erro ao cadastrar cliente: " + e.getMessage(),
-                "Erro de Cadastro",
-                JOptionPane.ERROR_MESSAGE);
-        }
-        } else {
-        JOptionPane.showMessageDialog(null,
-                "Todos os campos devem ser preenchidos corretamente e as senhas devem coincidir.",
-                "Erro de criar conta",
-                JOptionPane.ERROR_MESSAGE);
+                    "Todos os campos devem ser preenchidos corretamente e as senhas devem coincidir.",
+                    "Erro de criar conta",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_confirmarActionPerformed
 

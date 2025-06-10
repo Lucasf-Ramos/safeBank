@@ -63,7 +63,7 @@ public class transacao extends javax.swing.JFrame {
         pageName.setToolTipText("");
         pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         header.add(pageName);
-        pageName.setBounds(10, 130, 300, 23);
+        pageName.setBounds(10, 130, 300, 24);
 
         gradient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gradient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sources/red_bg.jpg"))); // NOI18N
@@ -90,7 +90,7 @@ public class transacao extends javax.swing.JFrame {
         lbl_remetente.setToolTipText("");
         lbl_remetente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_remetente);
-        lbl_remetente.setBounds(310, 300, 300, 23);
+        lbl_remetente.setBounds(310, 300, 300, 24);
 
         txtfld_remetente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtfld_remetente);
@@ -102,7 +102,7 @@ public class transacao extends javax.swing.JFrame {
         lbl_quantia.setToolTipText("");
         lbl_quantia.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_quantia);
-        lbl_quantia.setBounds(310, 360, 300, 23);
+        lbl_quantia.setBounds(310, 360, 300, 24);
 
         txtfld_quantia.setText("0");
         txtfld_quantia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -120,7 +120,7 @@ public class transacao extends javax.swing.JFrame {
         lbl_senha.setToolTipText("");
         lbl_senha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_senha);
-        lbl_senha.setBounds(310, 420, 300, 23);
+        lbl_senha.setBounds(310, 420, 300, 24);
 
         btn_enviar.setBackground(new java.awt.Color(255, 69, 69));
         btn_enviar.setForeground(new java.awt.Color(255, 255, 255));

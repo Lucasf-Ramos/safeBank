@@ -12,15 +12,15 @@ public class UsuarioDAO {
         this.conn = ConnectionFactory.getConnection();
     }
     
-    public int inserirUsuario(Cliente cliente) {
-    String sql = "INSERT INTO usuario (nome, email, senha, tipo) VALUES (?, ?, ?, ?)";
+    public int inserirUsuario(Usuario usuario) {
+    String sql = "INSERT INTO usuario (nome, email, senha, tipo_usuario) VALUES (?, ?, ?, ?)";
 
     try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-        stmt.setString(1, cliente.getNome());
-        stmt.setString(2, cliente.getEmail());
-        stmt.setString(3, cliente.getSenha());
-        stmt.setString(4, "cliente");
+        stmt.setString(1, usuario.getNome());
+        stmt.setString(2, usuario.getEmail());
+        stmt.setString(3, usuario.getSenha());
+        stmt.setString(4, usuario.getTipoUsuario().name());
 
         int rowsAffected = stmt.executeUpdate();
 

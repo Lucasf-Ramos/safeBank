@@ -9,7 +9,8 @@ public class Conta {
     private double saldo = 100;
     private Cliente cliente;
 
-    public Conta(String numeroConta, String agencia, double saldo, Cliente cliente) {
+    public Conta(long id, String numeroConta, String agencia, double saldo, Cliente cliente) {
+        this.id = id;
         this.numeroConta = numeroConta;
         this.agencia = agencia;
         this.saldo = saldo;
