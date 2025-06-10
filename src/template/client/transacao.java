@@ -1,6 +1,10 @@
 package template.client;
 
+import DAO.ContaDAO;
 import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Conta;
+import model.Sessao;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,8 +25,13 @@ public class transacao extends javax.swing.JFrame {
     public transacao() {
         initComponents();
         
-        double saldo = 100;
-        txt_saldo.setText("Saldo: R$"+ saldo);
+        
+        Cliente cliente = (Cliente)Sessao.getUsuario();
+        
+        ContaDAO contaDao = new ContaDAO();
+        Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId()); // metodo para pegar as informações da conta.
+        
+        txt_saldo.setText("Saldo: R$" + conta.getSaldo());
         
     }
 
@@ -158,58 +167,58 @@ public class transacao extends javax.swing.JFrame {
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
         try {
-             String remetente = txtfld_remetente.getText();
-             double quantia = Double.parseDouble(txtfld_quantia.getText());
-             String senha = String.valueOf(txtfld_senha.getPassword());
+            String pixRemetente = txtfld_remetente.getText();
+            double valor = Double.parseDouble(txtfld_quantia.getText());
+            String senha = String.valueOf(txtfld_senha.getPassword());
              
-             String myAccont = "user"; //aqui vem a conta atual, pra chegar se voce nao esta tentando mandar dinheiro para si mesmo
-             String mySenha = "123"; //senha da conta atual
+            Cliente cliente = (Cliente)Sessao.getUsuario();
+            
+            ContaDAO contaDao = new ContaDAO();
+            Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId());
              
-             if(quantia<=0){
-                 JOptionPane.showMessageDialog(null,
-                    "A quantia deve ser maior do que zero",
-                    "Erro de transacao",
-                    JOptionPane.ERROR_MESSAGE);
-             }
-             else if(remetente.equals("") || senha.equals("")){
-                 JOptionPane.showMessageDialog(null,
-                "Todos os campos devem ser preenchidos corretamente",
-                "Erro de transacao",
-                JOptionPane.ERROR_MESSAGE);
-             }
-             else if(remetente.equals(myAccont)){
-                 JOptionPane.showMessageDialog(null,
-                "Voce não pode enviar dinheiro para sua própria conta",
-                "Erro de transacao",
-                JOptionPane.ERROR_MESSAGE);
-             }
-             else if(!senha.equals(mySenha)){
-                 JOptionPane.showMessageDialog(null,
-                "Senha incorreta",
-                "Erro de transacao",
-                JOptionPane.ERROR_MESSAGE);
-             }
-             else{
-                 // se chegar aqui esta tudo certo
-                 
-                 //açao aqui
-                 
-                 
-                clientAccont targetScreen = new clientAccont();
-                this.setVisible(false);
-                targetScreen.setVisible(true);
-             }
+            Conta myAccont = conta; //aqui vem a conta atual, pra chegar se voce nao esta tentando mandar dinheiro para si mesmo
+            String mySenha = cliente.getSenha(); //senha da conta atual
              
-        
-        } catch (Exception e) {
-        }
-        
-        
-       
+            if(valor <= 0){
+                JOptionPane.showMessageDialog(null,
+                   "A quantia deve ser maior do que zero",
+                   "Erro de transacao",
+                   JOptionPane.ERROR_MESSAGE);
+            }
+            else if(pixRemetente.equals("") || senha.equals("")){
+                JOptionPane.showMessageDialog(null,
+               "Todos os campos devem ser preenchidos corretamente",
+               "Erro de transacao",
+               JOptionPane.ERROR_MESSAGE);
+            }
+            else if(pixRemetente.equals(myAccont)){
+                JOptionPane.showMessageDialog(null,
+               "Voce não pode enviar dinheiro para sua própria conta",
+               "Erro de transacao",
+               JOptionPane.ERROR_MESSAGE);
+            }
+            else if(!senha.equals(mySenha)){
+                JOptionPane.showMessageDialog(null,
+               "Senha incorreta",
+               "Erro de transacao",
+               JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                // se chegar aqui esta tudo certo
+
+                //açao aqui
+
+
+               clientAccont targetScreen = new clientAccont();
+               this.setVisible(false);
+               targetScreen.setVisible(true);
+            }
+
+
+       } catch (Exception e) {
+       }
         //if e tals e depois retorna pra tela normal
-        
-        
-        
+     
         //retorna a tela conta
         
     }//GEN-LAST:event_btn_enviarActionPerformed

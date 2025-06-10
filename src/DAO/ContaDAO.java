@@ -73,7 +73,7 @@ public class ContaDAO {
         return false;
     }
 
-/*    public Conta buscarPorNumeroConta(String numeroConta) {
+    public Conta buscarContaPorNumero(String numeroConta) {
         String sql = "SELECT * FROM conta WHERE numero_conta = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, numeroConta);
@@ -81,16 +81,16 @@ public class ContaDAO {
 
             if (rs.next()) {
                 return new Conta(
-                    rs.getLong("id"),
-                    numeroConta,
-                    rs.getString("agencia"),
-                    rs.getDouble("saldo"),
-                    rs.getLong("cliente_id")
+                rs.getLong("id"),
+                rs.getString("numero_conta"),
+                rs.getString("agencia"),
+                rs.getDouble("saldo"),
+                null
                 );
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
-    }*/
+    }
 }
