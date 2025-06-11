@@ -1,10 +1,12 @@
 package template.client;
 
 import DAO.ContaDAO;
+import DAO.TransacaoDAO;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Conta;
 import model.Sessao;
+import model.Transacao;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -155,61 +157,105 @@ public class transacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
-        try {
-            String pixRemetente = txtfld_remetente.getText();
-            double valor = Double.parseDouble(txtfld_quantia.getText());
-            String senha = String.valueOf(txtfld_senha.getPassword());
-             
-            Cliente cliente = (Cliente)Sessao.getUsuario();
-            
-            ContaDAO contaDao = new ContaDAO();
-            Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId());
-             
-            Conta myAccont = conta; //aqui vem a conta atual, pra chegar se voce nao esta tentando mandar dinheiro para si mesmo
-            String mySenha = cliente.getSenha(); //senha da conta atual
-             
-            if(valor <= 0){
-                JOptionPane.showMessageDialog(null,
-                   "A quantia deve ser maior do que zero",
-                   "Erro de transacao",
-                   JOptionPane.ERROR_MESSAGE);
-            }
-            else if(pixRemetente.equals("") || senha.equals("")){
-                JOptionPane.showMessageDialog(null,
-               "Todos os campos devem ser preenchidos corretamente",
-               "Erro de transacao",
-               JOptionPane.ERROR_MESSAGE);
-            }
-            else if(pixRemetente.equals(myAccont)){
-                JOptionPane.showMessageDialog(null,
-               "Voce não pode enviar dinheiro para sua própria conta",
-               "Erro de transacao",
-               JOptionPane.ERROR_MESSAGE);
-            }
-            else if(!senha.equals(mySenha)){
-                JOptionPane.showMessageDialog(null,
-               "Senha incorreta",
-               "Erro de transacao",
-               JOptionPane.ERROR_MESSAGE);
-            }
-            else{
-                // se chegar aqui esta tudo certo
+    try {
+        String numeroContaDestino = txtfld_remetente.getText().trim(); // chave pix (número da conta)
+        double valor = Double.parseDouble(txtfld_quantia.getText());
+        String senha = String.valueOf(txtfld_senha.getPassword());
 
-                //açao aqui
+        Cliente cliente = (Cliente) Sessao.getUsuario();
+        ContaDAO contaDao = new ContaDAO();
+        Conta contaOrigem = contaDao.buscarContaPorClienteId(cliente.getClienteId());
 
+        if (valor <= 0) {
+            JOptionPane.showMessageDialog(this,
+                "A quantia deve ser maior que zero.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-               clientAccont targetScreen = new clientAccont();
-               this.setVisible(false);
-               targetScreen.setVisible(true);
-            }
+        if (numeroContaDestino.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Todos os campos devem ser preenchidos corretamente.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        if (numeroContaDestino.equals(contaOrigem.getNumeroConta())) {
+            JOptionPane.showMessageDialog(this,
+                "Você não pode transferir para sua própria conta.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-       } catch (Exception e) {
-       }
-        //if e tals e depois retorna pra tela normal
-     
-        //retorna a tela conta
-        
+        if (!senha.equals(cliente.getSenha())) {
+            JOptionPane.showMessageDialog(this,
+                "Senha incorreta.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Buscar conta de destino
+        Conta contaDestino = contaDao.buscarContaPorNumero(numeroContaDestino);
+
+        if (contaDestino == null) {
+            JOptionPane.showMessageDialog(this,
+                "Conta de destino não encontrada.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Verifica se há saldo suficiente
+        if (contaOrigem.getSaldo() < valor) {
+            JOptionPane.showMessageDialog(this,
+                "Saldo insuficiente.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Criar objeto de transação
+        Transacao transacao = new Transacao();
+        transacao.setContaOrigem(contaOrigem);
+        transacao.setContaDestino(contaDestino);
+        transacao.setValor(valor);
+
+        // Realizar a transferência
+        TransacaoDAO transacaoDAO = new TransacaoDAO();
+        boolean sucesso = transacaoDAO.realizarTransferenciaPorNumeroConta(transacao);
+
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this,
+                "Transferência realizada com sucesso.",
+                "Sucesso",
+                JOptionPane.INFORMATION_MESSAGE);
+
+            clientAccont targetScreen = new clientAccont();
+            this.setVisible(false);
+            targetScreen.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "Erro ao realizar transferência.",
+                "Erro de transação",
+                JOptionPane.ERROR_MESSAGE);
+        }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Valor inválido. Digite apenas números.",
+                "Erro de entrada",
+                JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                "Erro inesperado: " + e.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } 
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed

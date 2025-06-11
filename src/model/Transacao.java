@@ -17,6 +17,10 @@ public class Transacao {
         this.data_transferencia = data_transferencia;
     }
 
+    public Transacao() {
+        
+    }
+
     public long getId() {
         return id;
     }
