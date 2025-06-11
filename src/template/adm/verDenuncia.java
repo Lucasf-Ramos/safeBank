@@ -1,12 +1,5 @@
 package template.adm;
 
-import Sources.transationCell;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import Sources.denunCell;
-import template.Index;
 import template.client.historico;
 
 /*
@@ -137,7 +130,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 150, 30));
+        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, 150, 30));
 
         resumo.setBackground(new java.awt.Color(255, 255, 255));
         resumo.setText("Resumo do acontecimento e blablabla");
@@ -168,7 +161,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 AprovarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 150, 30));
+        getContentPane().add(Aprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 150, 30));
 
         Negar.setBackground(new java.awt.Color(255, 102, 102));
         Negar.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,7 +172,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 NegarActionPerformed(evt);
             }
         });
-        getContentPane().add(Negar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 150, 30));
+        getContentPane().add(Negar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 150, 30));
 
         pack();
         setLocationRelativeTo(null);

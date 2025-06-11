@@ -84,7 +84,7 @@ public class clientAccont extends javax.swing.JFrame {
             }
         });
         header.add(btn_deslogar);
-        btn_deslogar.setBounds(1000, 10, 70, 40);
+        btn_deslogar.setBounds(940, 30, 90, 40);
 
         hello.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         hello.setForeground(new java.awt.Color(255, 255, 255));

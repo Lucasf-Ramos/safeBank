@@ -1,12 +1,10 @@
 package template.client;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import Sources.transationCell;
 import template.adm.funcAccont;
-import template.client.clientAccont;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -89,7 +87,7 @@ public class historico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -112,13 +110,15 @@ public class historico extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 170);
 
-        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 50));
+        getContentPane().add(header);
+        header.setBounds(0, 0, 1080, 50);
 
         content.setPreferredSize(new java.awt.Dimension(1080, 720));
         content.setLayout(null);
         scroll.setViewportView(content);
 
-        getContentPane().add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1070, 750));
+        getContentPane().add(scroll);
+        scroll.setBounds(0, 140, 1070, 750);
 
         historicoTitle.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         historicoTitle.setForeground(new java.awt.Color(102, 102, 102));
@@ -127,8 +127,10 @@ public class historico extends javax.swing.JFrame {
         historicoTitle.setToolTipText("");
         historicoTitle.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         historicoTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(historicoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1040, 30));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 1040, 10));
+        getContentPane().add(historicoTitle);
+        historicoTitle.setBounds(10, 70, 1040, 30);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(10, 120, 1040, 10);
 
         pack();
         setLocationRelativeTo(null);
