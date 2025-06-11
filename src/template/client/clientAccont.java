@@ -48,20 +48,20 @@ public class clientAccont extends javax.swing.JFrame {
 
         header = new javax.swing.JPanel();
         dados = new javax.swing.JLabel();
+        btn_deslogar = new javax.swing.JButton();
         hello = new javax.swing.JLabel();
         gradient = new javax.swing.JLabel();
         txt_saldo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btn_edit = new javax.swing.JButton();
         btn_transf = new javax.swing.JButton();
-        btn_deslogar = new javax.swing.JButton();
         btn_denun = new javax.swing.JButton();
         btn_hist1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -73,6 +73,18 @@ public class clientAccont extends javax.swing.JFrame {
         dados.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         header.add(dados);
         dados.setBounds(20, 110, 300, 24);
+
+        btn_deslogar.setBackground(new java.awt.Color(204, 204, 204));
+        btn_deslogar.setForeground(new java.awt.Color(51, 51, 51));
+        btn_deslogar.setText("<html><h2>Deslogar");
+        btn_deslogar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_deslogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_deslogarActionPerformed(evt);
+            }
+        });
+        header.add(btn_deslogar);
+        btn_deslogar.setBounds(1000, 10, 70, 40);
 
         hello.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         hello.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,8 +99,7 @@ public class clientAccont extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 170);
 
-        getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 170);
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 170));
 
         txt_saldo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         txt_saldo.setForeground(new java.awt.Color(102, 102, 102));
@@ -96,10 +107,8 @@ public class clientAccont extends javax.swing.JFrame {
         txt_saldo.setText("Saldo: R$100,00");
         txt_saldo.setToolTipText("");
         txt_saldo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(txt_saldo);
-        txt_saldo.setBounds(10, 200, 1040, 30);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 250, 1040, 10);
+        getContentPane().add(txt_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1040, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1040, 10));
 
         btn_edit.setText("<html><h1>Editar Conta");
         btn_edit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -108,8 +117,7 @@ public class clientAccont extends javax.swing.JFrame {
                 btn_editActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_edit);
-        btn_edit.setBounds(70, 360, 300, 70);
+        getContentPane().add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 300, 70));
 
         btn_transf.setText("<html><h1>Transferência");
         btn_transf.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -118,18 +126,7 @@ public class clientAccont extends javax.swing.JFrame {
                 btn_transfActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_transf);
-        btn_transf.setBounds(70, 280, 300, 70);
-
-        btn_deslogar.setText("<html><h2>Deslogar");
-        btn_deslogar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_deslogar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_deslogarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_deslogar);
-        btn_deslogar.setBounds(970, 420, 80, 40);
+        getContentPane().add(btn_transf, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 300, 70));
 
         btn_denun.setText("<html><h1>Denunciar");
         btn_denun.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -138,8 +135,7 @@ public class clientAccont extends javax.swing.JFrame {
                 btn_denunActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_denun);
-        btn_denun.setBounds(690, 280, 300, 70);
+        getContentPane().add(btn_denun, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 300, 70));
 
         btn_hist1.setText("<html><h1>Histórico");
         btn_hist1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -148,8 +144,7 @@ public class clientAccont extends javax.swing.JFrame {
                 btn_hist1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_hist1);
-        btn_hist1.setBounds(380, 280, 300, 70);
+        getContentPane().add(btn_hist1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 300, 70));
 
         pack();
         setLocationRelativeTo(null);

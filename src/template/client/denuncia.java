@@ -49,7 +49,7 @@ public class denuncia extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -59,8 +59,7 @@ public class denuncia extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 60);
 
-        getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 60);
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
         pageName.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         pageName.setForeground(new java.awt.Color(102, 102, 102));
@@ -68,46 +67,39 @@ public class denuncia extends javax.swing.JFrame {
         pageName.setText("Fazer Denúncia");
         pageName.setToolTipText("");
         pageName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(pageName);
-        pageName.setBounds(240, 90, 610, 78);
-        getContentPane().add(_______);
-        _______.setBounds(80, 180, 930, 10);
+        getContentPane().add(pageName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 610, 78));
+        getContentPane().add(_______, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 930, 10));
 
         lbl_resumo.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_resumo.setForeground(new java.awt.Color(102, 102, 102));
         lbl_resumo.setText("Resumo:");
         lbl_resumo.setToolTipText("");
         lbl_resumo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_resumo);
-        lbl_resumo.setBounds(310, 320, 300, 24);
+        getContentPane().add(lbl_resumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 300, -1));
 
         txtfld_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_user);
-        txtfld_user.setBounds(310, 270, 420, 22);
+        getContentPane().add(txtfld_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 420, -1));
 
         lbl_user.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user.setForeground(new java.awt.Color(102, 102, 102));
         lbl_user.setText("Conta a denúnciar:");
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 24);
+        getContentPane().add(lbl_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 300, -1));
 
         txtfld_resumo.setColumns(20);
         txtfld_resumo.setRows(5);
         txtfld_resumo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtarea_resumo.setViewportView(txtfld_resumo);
 
-        getContentPane().add(txtarea_resumo);
-        txtarea_resumo.setBounds(310, 350, 420, 90);
+        getContentPane().add(txtarea_resumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 420, 90));
 
         lbl_data.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_data.setForeground(new java.awt.Color(102, 102, 102));
         lbl_data.setText("Data:");
         lbl_data.setToolTipText("");
         lbl_data.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_data);
-        lbl_data.setBounds(310, 460, 300, 24);
+        getContentPane().add(lbl_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 300, -1));
 
         txtfld_data.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtfld_data.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -120,8 +112,7 @@ public class denuncia extends javax.swing.JFrame {
                 txtfld_dataKeyTyped(evt);
             }
         });
-        getContentPane().add(txtfld_data);
-        txtfld_data.setBounds(310, 490, 130, 22);
+        getContentPane().add(txtfld_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 130, -1));
 
         btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
         btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,8 +124,7 @@ public class denuncia extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cancelar);
-        btn_cancelar.setBounds(430, 590, 180, 30);
+        getContentPane().add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 180, 30));
 
         btn_enviar.setBackground(new java.awt.Color(255, 69, 69));
         btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,8 +136,7 @@ public class denuncia extends javax.swing.JFrame {
                 btn_enviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_enviar);
-        btn_enviar.setBounds(430, 550, 180, 30);
+        getContentPane().add(btn_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, 30));
 
         pack();
         setLocationRelativeTo(null);

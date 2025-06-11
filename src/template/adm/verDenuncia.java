@@ -80,9 +80,8 @@ public class verDenuncia extends javax.swing.JFrame {
         Negar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         denunciaTitle.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         denunciaTitle.setForeground(new java.awt.Color(102, 102, 102));
@@ -91,10 +90,8 @@ public class verDenuncia extends javax.swing.JFrame {
         denunciaTitle.setToolTipText("");
         denunciaTitle.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         denunciaTitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(denunciaTitle);
-        denunciaTitle.setBounds(10, 70, 1040, 30);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 110, 1040, 10);
+        getContentPane().add(denunciaTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 1040, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1040, 10));
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -104,8 +101,7 @@ public class verDenuncia extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 170);
 
-        getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 50);
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 50));
 
         denunciado.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         denunciado.setForeground(new java.awt.Color(102, 102, 102));
@@ -113,10 +109,8 @@ public class verDenuncia extends javax.swing.JFrame {
         denunciado.setToolTipText("");
         denunciado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         denunciado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(denunciado);
-        denunciado.setBounds(10, 140, 880, 30);
-        getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(10, 180, 1040, 10);
+        getContentPane().add(denunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 880, 30));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 1040, 10));
 
         denunciaTitle2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         denunciaTitle2.setForeground(new java.awt.Color(102, 102, 102));
@@ -124,10 +118,8 @@ public class verDenuncia extends javax.swing.JFrame {
         denunciaTitle2.setToolTipText("");
         denunciaTitle2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         denunciaTitle2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(denunciaTitle2);
-        denunciaTitle2.setBounds(20, 260, 880, 30);
-        getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(10, 240, 1040, 10);
+        getContentPane().add(denunciaTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 880, 30));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 1040, 10));
 
         hitorico_denunciante.setText("ver histórico");
         hitorico_denunciante.addActionListener(new java.awt.event.ActionListener() {
@@ -135,8 +127,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 hitorico_denuncianteActionPerformed(evt);
             }
         });
-        getContentPane().add(hitorico_denunciante);
-        hitorico_denunciante.setBounds(910, 200, 110, 23);
+        getContentPane().add(hitorico_denunciante, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 200, 110, -1));
 
         cancelar.setBackground(new java.awt.Color(204, 204, 204));
         cancelar.setText("Cancelar");
@@ -146,14 +137,12 @@ public class verDenuncia extends javax.swing.JFrame {
                 cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(cancelar);
-        cancelar.setBounds(830, 540, 150, 30);
+        getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 150, 30));
 
         resumo.setBackground(new java.awt.Color(255, 255, 255));
         resumo.setText("Resumo do acontecimento e blablabla");
         resumo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(resumo);
-        resumo.setBounds(30, 300, 990, 200);
+        getContentPane().add(resumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 990, 200));
 
         denunciante.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         denunciante.setForeground(new java.awt.Color(102, 102, 102));
@@ -161,8 +150,7 @@ public class verDenuncia extends javax.swing.JFrame {
         denunciante.setToolTipText("");
         denunciante.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         denunciante.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(denunciante);
-        denunciante.setBounds(10, 200, 880, 30);
+        getContentPane().add(denunciante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 880, 30));
 
         historico_Denunciado.setText("ver histórico");
         historico_Denunciado.addActionListener(new java.awt.event.ActionListener() {
@@ -170,8 +158,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 historico_DenunciadoActionPerformed(evt);
             }
         });
-        getContentPane().add(historico_Denunciado);
-        historico_Denunciado.setBounds(910, 140, 110, 23);
+        getContentPane().add(historico_Denunciado, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 110, -1));
 
         Aprovar.setBackground(new java.awt.Color(153, 255, 204));
         Aprovar.setText("Aprovar");
@@ -181,8 +168,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 AprovarActionPerformed(evt);
             }
         });
-        getContentPane().add(Aprovar);
-        Aprovar.setBounds(80, 540, 150, 30);
+        getContentPane().add(Aprovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 150, 30));
 
         Negar.setBackground(new java.awt.Color(255, 102, 102));
         Negar.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,8 +179,7 @@ public class verDenuncia extends javax.swing.JFrame {
                 NegarActionPerformed(evt);
             }
         });
-        getContentPane().add(Negar);
-        Negar.setBounds(250, 540, 150, 30);
+        getContentPane().add(Negar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 150, 30));
 
         pack();
         setLocationRelativeTo(null);

@@ -52,7 +52,7 @@ public class editarConta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -62,44 +62,37 @@ public class editarConta extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 60);
 
-        getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 60);
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 60));
 
         txtfld_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_user);
-        txtfld_user.setBounds(310, 270, 420, 22);
+        getContentPane().add(txtfld_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 420, -1));
 
         lbl_user.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user.setForeground(new java.awt.Color(102, 102, 102));
         lbl_user.setText("Novo Nome:");
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_user);
-        lbl_user.setBounds(310, 240, 300, 24);
+        getContentPane().add(lbl_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 300, -1));
 
         lbl_senha.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_senha.setForeground(new java.awt.Color(102, 102, 102));
         lbl_senha.setText("Nova Senha:");
         lbl_senha.setToolTipText("");
         lbl_senha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_senha);
-        lbl_senha.setBounds(310, 320, 300, 30);
+        getContentPane().add(lbl_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 300, 30));
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_senha);
-        txtfld_senha.setBounds(310, 350, 420, 30);
+        getContentPane().add(txtfld_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 420, 30));
 
         lbl_repsenha.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_repsenha.setForeground(new java.awt.Color(102, 102, 102));
         lbl_repsenha.setText("Senha Antiga:");
         lbl_repsenha.setToolTipText("");
         lbl_repsenha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_repsenha);
-        lbl_repsenha.setBounds(310, 390, 300, 30);
+        getContentPane().add(lbl_repsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 300, 30));
 
         txtfld_senhaConfirm.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_senhaConfirm);
-        txtfld_senhaConfirm.setBounds(310, 420, 420, 30);
+        getContentPane().add(txtfld_senhaConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 420, 30));
 
         btn_confirmar.setBackground(new java.awt.Color(255, 69, 69));
         btn_confirmar.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,8 +104,7 @@ public class editarConta extends javax.swing.JFrame {
                 btn_confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_confirmar);
-        btn_confirmar.setBounds(430, 550, 180, 30);
+        getContentPane().add(btn_confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 550, 180, 30));
 
         btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
         btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,8 +116,7 @@ public class editarConta extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cancelar);
-        btn_cancelar.setBounds(430, 590, 180, 30);
+        getContentPane().add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 180, 30));
 
         Logotipo.setFont(new java.awt.Font("DialogInput", 0, 36)); // NOI18N
         Logotipo.setForeground(new java.awt.Color(102, 102, 102));
@@ -133,10 +124,8 @@ public class editarConta extends javax.swing.JFrame {
         Logotipo.setText("Editar Conta");
         Logotipo.setToolTipText("");
         Logotipo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(Logotipo);
-        Logotipo.setBounds(380, 90, 300, 78);
-        getContentPane().add(_______);
-        _______.setBounds(80, 180, 930, 10);
+        getContentPane().add(Logotipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 300, 78));
+        getContentPane().add(_______, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 930, 10));
 
         pack();
         setLocationRelativeTo(null);

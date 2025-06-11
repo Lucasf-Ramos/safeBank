@@ -61,7 +61,7 @@ public class transacao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         header.setBackground(new java.awt.Color(255, 69, 69));
         header.setLayout(null);
@@ -79,8 +79,7 @@ public class transacao extends javax.swing.JFrame {
         header.add(gradient);
         gradient.setBounds(0, 0, 1080, 170);
 
-        getContentPane().add(header);
-        header.setBounds(0, 0, 1080, 170);
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 170));
 
         txt_saldo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         txt_saldo.setForeground(new java.awt.Color(102, 102, 102));
@@ -88,30 +87,25 @@ public class transacao extends javax.swing.JFrame {
         txt_saldo.setText("Saldo: R$100,00");
         txt_saldo.setToolTipText("");
         txt_saldo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(txt_saldo);
-        txt_saldo.setBounds(10, 200, 1040, 30);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 250, 1040, 10);
+        getContentPane().add(txt_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1040, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1040, 10));
 
         lbl_remetente.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_remetente.setForeground(new java.awt.Color(102, 102, 102));
         lbl_remetente.setText("Pix do remetente:");
         lbl_remetente.setToolTipText("");
         lbl_remetente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_remetente);
-        lbl_remetente.setBounds(310, 300, 300, 24);
+        getContentPane().add(lbl_remetente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 300, -1));
 
         txtfld_remetente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_remetente);
-        txtfld_remetente.setBounds(310, 330, 420, 22);
+        getContentPane().add(txtfld_remetente, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 420, -1));
 
         lbl_quantia.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_quantia.setForeground(new java.awt.Color(102, 102, 102));
         lbl_quantia.setText("Quantia:");
         lbl_quantia.setToolTipText("");
         lbl_quantia.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_quantia);
-        lbl_quantia.setBounds(310, 360, 300, 24);
+        getContentPane().add(lbl_quantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 300, -1));
 
         txtfld_quantia.setText("0");
         txtfld_quantia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -120,16 +114,14 @@ public class transacao extends javax.swing.JFrame {
                 txtfld_quantiaKeyTyped(evt);
             }
         });
-        getContentPane().add(txtfld_quantia);
-        txtfld_quantia.setBounds(310, 390, 420, 22);
+        getContentPane().add(txtfld_quantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 420, -1));
 
         lbl_senha.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_senha.setForeground(new java.awt.Color(102, 102, 102));
         lbl_senha.setText("Senha:");
         lbl_senha.setToolTipText("");
         lbl_senha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(lbl_senha);
-        lbl_senha.setBounds(310, 420, 300, 24);
+        getContentPane().add(lbl_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 300, -1));
 
         btn_enviar.setBackground(new java.awt.Color(255, 69, 69));
         btn_enviar.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,8 +133,7 @@ public class transacao extends javax.swing.JFrame {
                 btn_enviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_enviar);
-        btn_enviar.setBounds(430, 490, 180, 30);
+        getContentPane().add(btn_enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 490, 180, 30));
 
         btn_cancelar.setBackground(new java.awt.Color(153, 153, 153));
         btn_cancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,12 +145,10 @@ public class transacao extends javax.swing.JFrame {
                 btn_cancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cancelar);
-        btn_cancelar.setBounds(430, 530, 180, 30);
+        getContentPane().add(btn_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 530, 180, 30));
 
         txtfld_senha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtfld_senha);
-        txtfld_senha.setBounds(310, 450, 420, 22);
+        getContentPane().add(txtfld_senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 420, -1));
 
         pack();
         setLocationRelativeTo(null);
