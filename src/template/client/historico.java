@@ -52,7 +52,8 @@ public class historico extends javax.swing.JFrame {
                     transacao.getContaOrigem().getNumeroConta(),
                     transacao.getData_transferencia(),
                     transacao.getId(),
-                    transacao.getValor()
+                    transacao.getValor(),
+                    transacao.getProtocolo()
                 ));
         }
        

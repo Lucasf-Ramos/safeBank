@@ -18,7 +18,7 @@ public class transationCell extends javax.swing.JPanel {
     public transationCell() {
         initComponents();
     }
-     public transationCell(String _destinatario, String _remetente, Date _data, long _cod, double _quantia) {
+     public transationCell(String _destinatario, String _remetente, Date _data, long _cod, double _quantia, long prot) {
         initComponents();
        
         
@@ -27,6 +27,7 @@ public class transationCell extends javax.swing.JPanel {
         data.setText(_data.toString());
         id.setText(String.valueOf(_cod));
         quantia.setText("R$" + String.valueOf(_quantia));
+        protocolo.setText(String.valueOf(prot));
     }
     
 
@@ -44,6 +45,7 @@ public class transationCell extends javax.swing.JPanel {
         quantia = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         remetente = new javax.swing.JLabel();
+        protocolo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -61,6 +63,8 @@ public class transationCell extends javax.swing.JPanel {
 
         remetente.setText("de: 0000");
 
+        protocolo.setText("Cod: 00000");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,9 +78,11 @@ public class transationCell extends javax.swing.JPanel {
                 .addComponent(data)
                 .addGap(114, 114, 114)
                 .addComponent(quantia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(id)
-                .addGap(157, 157, 157))
+                .addGap(109, 109, 109)
+                .addComponent(protocolo)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +93,8 @@ public class transationCell extends javax.swing.JPanel {
                     .addComponent(data)
                     .addComponent(quantia)
                     .addComponent(id)
-                    .addComponent(remetente))
+                    .addComponent(remetente)
+                    .addComponent(protocolo))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -97,6 +104,7 @@ public class transationCell extends javax.swing.JPanel {
     private javax.swing.JLabel data;
     private javax.swing.JLabel destinatario;
     private javax.swing.JLabel id;
+    private javax.swing.JLabel protocolo;
     private javax.swing.JLabel quantia;
     private javax.swing.JLabel remetente;
     // End of variables declaration//GEN-END:variables

@@ -53,12 +53,13 @@ public class TransacaoDAO {
                 return false;
             }
 
-            String sql = "INSERT INTO transferencia (conta_origem, conta_destino, valor, data_transferencia) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO transferencia (conta_origem, conta_destino, valor, data_transferencia, protocolo) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setLong(1, contaOrigem.getId());
                 stmt.setLong(2, contaDestino.getId());
                 stmt.setDouble(3, valor);
                 stmt.setTimestamp(4, new Timestamp(new Date().getTime()));
+                stmt.setLong(5, transacao.getProtocolo());
                 stmt.executeUpdate();
             }
 
@@ -98,13 +99,15 @@ public class TransacaoDAO {
                 Conta destino = contaDAO.buscarContaPorId(rs.getLong("conta_destino"));
                 double valor = rs.getDouble("valor");
                 Date data = rs.getTimestamp("data_transferencia");
+                long protocolo = rs.getLong("protocolo");
 
                 Transacao transacao = new Transacao(
                     rs.getLong("id"),
                     origem,
                     destino,
                     valor,
-                    data
+                    data,
+                    protocolo
                 );
 
                 transacoes.add(transacao);
