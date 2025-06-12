@@ -223,6 +223,7 @@ public class transacao extends javax.swing.JFrame {
         transacao.setContaOrigem(contaOrigem);
         transacao.setContaDestino(contaDestino);
         transacao.setValor(valor);
+        transacao.setProtocolo(Transacao.gerarNumeroProtocolo());
 
         // Realizar a transferência
         TransacaoDAO transacaoDAO = new TransacaoDAO();

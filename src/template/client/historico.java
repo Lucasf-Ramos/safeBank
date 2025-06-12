@@ -44,7 +44,7 @@ public class historico extends javax.swing.JFrame {
         Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId());
         
         var transacoes = transacaoDAO.listarTransferenciasPorContaId(conta);
-        
+
         for (Transacao transacao : transacoes) {
             cell.add(
                 new transationCell(
