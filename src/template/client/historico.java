@@ -1,9 +1,16 @@
 package template.client;
 
+import DAO.ContaDAO;
+import DAO.TransacaoDAO;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import Sources.transationCell;
+import java.util.ArrayList;
+import model.Cliente;
+import model.Conta;
+import model.Sessao;
+import model.Transacao;
 import template.adm.funcAccont;
 
 /*
@@ -24,23 +31,31 @@ public class historico extends javax.swing.JFrame {
      */
     boolean isFuncAccont = false; 
     
-    transationCell cell[]; //armazena as celulas de transaçao
+    ArrayList<transationCell> cell = new ArrayList<>();; //armazena as celulas de transaçao
     public historico() {
-        initComponents();
-        
-       transationCell _cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100)}; // meio campo pra criar as celulas e depois armazenar elas. Vai precisar de alguma logica pra puxar essas informaçoes do banco de dados de forma volatil
-       cell = _cell;
-       
-        generateGrid();
-    }
-     public historico(int id, boolean isFunc) {
         initComponents();
         //usa eses pra puaxar informaçoes de um ID expecifico
         
+        TransacaoDAO transacaoDAO = new TransacaoDAO();
         
-       transationCell _cell[] = {new transationCell("001", "002", "02/02/2002", "0001", 100)}; // meio campo pra criar as celulas e depois armazenar elas. Vai precisar de alguma logica pra puxar essas informaçoes do banco de dados de forma volatil
-       cell = _cell;
-       isFuncAccont = isFunc;
+        Cliente cliente = (Cliente)Sessao.getUsuario();
+        
+        ContaDAO contaDao = new ContaDAO();
+        Conta conta = contaDao.buscarContaPorClienteId(cliente.getClienteId());
+        
+        var transacoes = transacaoDAO.listarTransferenciasPorContaId(conta);
+        
+        for (Transacao transacao : transacoes) {
+            cell.add(
+                new transationCell(
+                    transacao.getContaDestino().getNumeroConta(), 
+                    transacao.getContaOrigem().getNumeroConta(),
+                    transacao.getData_transferencia(),
+                    transacao.getId(),
+                    transacao.getValor()
+                ));
+        }
+       
        //isFunc verfica se o usuario que esta entrando é um funcionario ou um cliente
        
         generateGrid();
@@ -58,7 +73,7 @@ public class historico extends javax.swing.JFrame {
         
         
         //adiciona as celulas
-        int alturaTotal = ((60 + verticalGap))* (cell.length + 1);
+        int alturaTotal = ((60 + verticalGap))* (cell.size() + 1);
         content.setPreferredSize(new Dimension(400, alturaTotal));
         for(transationCell currentCell : cell){
             content.add(Box.createVerticalStrut(verticalGap));

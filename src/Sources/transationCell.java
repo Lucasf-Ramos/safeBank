@@ -4,8 +4,7 @@
  */
 package Sources;
 
-import model.Cliente;
-import model.Sessao;
+import java.util.Date;
 
 /**
  *
@@ -19,17 +18,15 @@ public class transationCell extends javax.swing.JPanel {
     public transationCell() {
         initComponents();
     }
-     public transationCell(String _destinatario, String _remetente, String _data, String _cod, double _quantia) {
+     public transationCell(String _destinatario, String _remetente, Date _data, long _cod, double _quantia) {
         initComponents();
-        
-        Cliente cliente = (Cliente)Sessao.getUsuario();
+       
         
         destinatario.setText("Para: " + _destinatario);
-        remetente.setText("De: " + cliente.getNome());
-        data.setText(_data);
-        id.setText(_cod);
+        remetente.setText("De: " + _remetente);
+        data.setText(_data.toString());
+        id.setText(String.valueOf(_cod));
         quantia.setText("R$" + String.valueOf(_quantia));
-        
     }
     
 

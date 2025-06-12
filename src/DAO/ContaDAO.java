@@ -31,7 +31,6 @@ public class ContaDAO {
             return false;
         }
     }
-
     
     public Conta buscarContaPorClienteId(long clienteId) {
         String sql = "SELECT * FROM conta WHERE cliente_id = ?";
@@ -92,5 +91,31 @@ public class ContaDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public Conta buscarContaPorId(long id) {
+        String sql = "SELECT * FROM conta WHERE id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Conta conta = new Conta(
+                    rs.getLong("id"),
+                    rs.getString("numero_conta"),
+                    rs.getString("agencia"),
+                    rs.getDouble("saldo"),
+                    null // pode buscar e setar o cliente se necessário
+                );
+                
+                return conta;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null; // se não encontrar
     }
 }

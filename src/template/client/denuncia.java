@@ -47,7 +47,6 @@ public class denuncia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -82,7 +81,7 @@ public class denuncia extends javax.swing.JFrame {
 
         lbl_user.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         lbl_user.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_user.setText("Conta a denúnciar:");
+        lbl_user.setText("Codigo da transferencia:");
         lbl_user.setToolTipText("");
         lbl_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(lbl_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 300, -1));

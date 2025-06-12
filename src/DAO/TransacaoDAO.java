@@ -94,8 +94,8 @@ public class TransacaoDAO {
             ContaDAO contaDAO = new ContaDAO();
 
             while (rs.next()) {
-                Conta origem = contaDAO.buscarContaPorClienteId(rs.getLong("conta_origem"));
-                Conta destino = contaDAO.buscarContaPorClienteId(rs.getLong("conta_destino"));
+                Conta origem = contaDAO.buscarContaPorId(rs.getLong("conta_origem"));
+                Conta destino = contaDAO.buscarContaPorId(rs.getLong("conta_destino"));
                 double valor = rs.getDouble("valor");
                 Date data = rs.getTimestamp("data_transferencia");
 
