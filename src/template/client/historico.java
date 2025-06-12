@@ -99,6 +99,11 @@ public class historico extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
         historicoTitle = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
@@ -134,7 +139,7 @@ public class historico extends javax.swing.JFrame {
         scroll.setViewportView(content);
 
         getContentPane().add(scroll);
-        scroll.setBounds(0, 140, 1070, 750);
+        scroll.setBounds(0, 190, 1080, 750);
 
         historicoTitle.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 24)); // NOI18N
         historicoTitle.setForeground(new java.awt.Color(102, 102, 102));
@@ -147,6 +152,26 @@ public class historico extends javax.swing.JFrame {
         historicoTitle.setBounds(10, 70, 1040, 30);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(10, 120, 1040, 10);
+
+        jLabel1.setText("Conta Destino");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(110, 170, 80, 16);
+
+        jLabel2.setText("Conta Origem");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(260, 170, 80, 16);
+
+        jLabel3.setText("Data");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(460, 170, 30, 16);
+
+        jLabel5.setText("ID");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(810, 170, 20, 16);
+
+        jLabel6.setText("Protocolo");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(920, 170, 60, 16);
 
         pack();
         setLocationRelativeTo(null);
@@ -200,6 +225,11 @@ public class historico extends javax.swing.JFrame {
     private javax.swing.JLabel gradient;
     private javax.swing.JPanel header;
     private javax.swing.JLabel historicoTitle;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
