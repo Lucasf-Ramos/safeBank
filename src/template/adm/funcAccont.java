@@ -93,7 +93,7 @@ public class funcAccont extends javax.swing.JFrame {
         scroll.setViewportView(content);
 
         getContentPane().add(scroll);
-        scroll.setBounds(0, 270, 1070, 620);
+        scroll.setBounds(0, 270, 1080, 620);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(20, 230, 1040, 10);
 

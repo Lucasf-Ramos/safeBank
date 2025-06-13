@@ -133,7 +133,7 @@ public class verDenuncia extends javax.swing.JFrame {
         getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, 150, 30));
 
         resumo.setBackground(new java.awt.Color(255, 255, 255));
-        resumo.setText("Resumo do acontecimento e blablabla");
+        resumo.setText("Resumo");
         resumo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(resumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 990, 200));
 

@@ -53,13 +53,11 @@ public class clientAccont extends javax.swing.JFrame {
         gradient = new javax.swing.JLabel();
         txt_saldo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btn_edit = new javax.swing.JButton();
         btn_transf = new javax.swing.JButton();
         btn_denun = new javax.swing.JButton();
         btn_hist1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -110,15 +108,6 @@ public class clientAccont extends javax.swing.JFrame {
         getContentPane().add(txt_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1040, 30));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 1040, 10));
 
-        btn_edit.setText("<html><h1>Editar Conta");
-        btn_edit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 300, 70));
-
         btn_transf.setText("<html><h1>Transferência");
         btn_transf.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_transf.addActionListener(new java.awt.event.ActionListener() {
@@ -149,15 +138,6 @@ public class clientAccont extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-
-        editarConta targetScreen = new editarConta();
-        
-        this.setVisible(false);
-        targetScreen.setVisible(true);
-        
-    }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_transfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transfActionPerformed
        transacao targetScreen = new transacao();
@@ -215,7 +195,6 @@ public class clientAccont extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_denun;
     private javax.swing.JButton btn_deslogar;
-    private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_hist1;
     private javax.swing.JButton btn_transf;
     private javax.swing.JLabel dados;
