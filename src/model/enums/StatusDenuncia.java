@@ -1,4 +1,3 @@
-
 package model.enums;
 
 public enum StatusDenuncia {
@@ -6,7 +5,12 @@ public enum StatusDenuncia {
     concluido,
     rejeitado;
 
-    public String Status() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getDescricaoStatus() {
+        switch (this) {
+            case pendente: return "Pendente";
+            case concluido: return "Concluído";
+            case rejeitado: return "Rejeitado";
+            default: return this.name();
+        }
     }
 }

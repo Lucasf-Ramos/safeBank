@@ -130,25 +130,23 @@ public class TransacaoDAO {
 
         
             if (rs.next()) {
-            ContaDAO contaDAO = new ContaDAO();
-            Conta origem = contaDAO.buscarContaPorId(rs.getLong("conta_origem"));
-            Conta destino = contaDAO.buscarContaPorId(rs.getLong("conta_destino"));
+                ContaDAO contaDAO = new ContaDAO();
+                Conta origem = contaDAO.buscarContaPorId(rs.getLong("conta_origem"));
+                Conta destino = contaDAO.buscarContaPorId(rs.getLong("conta_destino"));
 
-            return new Transacao(
-                rs.getLong("id"),
-                origem,
-                destino,
-                rs.getDouble("valor"),
-                rs.getTimestamp("data_transferencia"),
-                rs.getLong("protocolo")
-            );
+                return new Transacao(
+                    rs.getLong("id"),
+                    origem,
+                    destino,
+                    rs.getDouble("valor"),
+                    rs.getTimestamp("data_transferencia"),
+                    rs.getLong("protocolo")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return null;
     }
-
-    return null;
-}
-
 }

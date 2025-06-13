@@ -1,4 +1,3 @@
-
 package model;
 
 import model.enums.StatusDenuncia;
@@ -6,7 +5,7 @@ import model.enums.StatusDenuncia;
 public class Denuncia {
     private long id;
     private String descricao;
-    protected StatusDenuncia status; 
+    private StatusDenuncia status; 
     private Transacao transferencia;
 
    
@@ -17,8 +16,13 @@ public class Denuncia {
         this.transferencia = transferencia;
     }
 
+    public Denuncia(String descricao, StatusDenuncia status, Transacao transferencia) {
+        this.descricao = descricao;
+        this.status = status;
+        this.transferencia = transferencia;
+    }
+
     public Denuncia() {
-        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public long getId() {
@@ -47,10 +51,6 @@ public class Denuncia {
     }
     public void setTransferencia(Transacao transferencia) {
         this.transferencia = transferencia;
-    }
-
-    public void setTransacao(Transacao transacao) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

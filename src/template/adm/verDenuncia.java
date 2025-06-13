@@ -195,17 +195,11 @@ public class verDenuncia extends javax.swing.JFrame {
     private void historico_DenunciadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historico_DenunciadoActionPerformed
         // TODO add your handling code here:
         //usa o id do denunciado para entrar na tela de historico dele
-        /*historico targetScreen = new historico(denunciadoID, true);
-        this.setVisible(false);
-        targetScreen.setVisible(true);*/
     }//GEN-LAST:event_historico_DenunciadoActionPerformed
 
     private void hitorico_denuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitorico_denuncianteActionPerformed
         // TODO add your handling code here:
          //usa o id do denunciante para entrar na tela de historico dele
-       /*  historico targetScreen = new historico(denuncianteID, true);
-        this.setVisible(false);
-        targetScreen.setVisible(true);*/
     }//GEN-LAST:event_hitorico_denuncianteActionPerformed
 
     /**
