@@ -6,21 +6,19 @@ import model.enums.StatusDenuncia;
 public class Denuncia {
     private long id;
     private String descricao;
-    private StatusDenuncia status; 
-    private long transferenciaId;
+    protected StatusDenuncia status; 
+    private Transacao transferencia;
 
-
-    public Denuncia(long id, String descricao, StatusDenuncia status, long transferenciaId) {
+   
+    public Denuncia(long id, String descricao, StatusDenuncia status, Transacao transferencia) {
         this.id = id;
         this.descricao = descricao;
         this.status = status;
-        this.transferenciaId = transferenciaId;
+        this.transferencia = transferencia;
     }
 
-    public Denuncia(String descricao, StatusDenuncia status, long transferenciaId) {
-        this.descricao = descricao;
-        this.status = status;
-        this.transferenciaId = transferenciaId;
+    public Denuncia() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public long getId() {
@@ -44,11 +42,15 @@ public class Denuncia {
         this.status = status;
     }
 
-    public long getTransferenciaId() {
-        return transferenciaId;
+    public Transacao getTransferencia() {
+        return transferencia;
     }
-    public void setTransferenciaId(long transferenciaId) {
-        this.transferenciaId = transferenciaId;
+    public void setTransferencia(Transacao transferencia) {
+        this.transferencia = transferencia;
+    }
+
+    public void setTransacao(Transacao transacao) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 
