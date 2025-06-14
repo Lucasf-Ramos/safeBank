@@ -4,7 +4,7 @@
  */
 package Sources;
 
-import model.Denuncia;
+import java.util.Date;
 import template.adm.funcAccont;
 import template.adm.verDenuncia;
 
@@ -23,12 +23,13 @@ public class denunCell extends javax.swing.JPanel {
     public denunCell() {
         initComponents();
     }
-    public denunCell(String _denunciado, String _data, long _id) {
+    public denunCell(String _denunciado, Date _data, long _id, String _status) {
         initComponents();
 
         denunciado.setText("Para: " + _denunciado);
         data.setText("Data: " + _data);
         this.id = _id;
+        status.setText("Status: " + _status);
         this.parent = funcAccont.funcScreen;
     }
     

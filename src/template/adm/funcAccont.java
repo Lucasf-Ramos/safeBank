@@ -1,9 +1,12 @@
 package template.adm;
 
+import DAO.DenunciaDAO;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import Sources.denunCell;
+import java.util.ArrayList;
+import model.Denuncia;
 import model.Funcionario;
 import model.Sessao;
 
@@ -24,14 +27,16 @@ public class funcAccont extends javax.swing.JFrame {
      * Creates new form historico
      */
     public static funcAccont funcScreen;
+    ArrayList<denunCell> cell = new ArrayList<>();
     
     public funcAccont() {
         initComponents();
         
         Funcionario funcionario = (Funcionario)Sessao.getUsuario();
         
-    /*  ContaDAO contaDao = new ContaDAO();
-        Conta conta = contaDao.buscarContaPorClienteId(funcionario.getFuncionarioId());*/
+        DenunciaDAO denunciaDAO = new DenunciaDAO();
+        
+        var denuncias = denunciaDAO.listarTodas();
         
         funcScreen = this;
         
@@ -41,13 +46,18 @@ public class funcAccont extends javax.swing.JFrame {
         
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         
-        denunCell cell[] = {new denunCell("000", "02/02/2002", 1),new denunCell("000", "02/02/2002", 2),new denunCell("000", "02/02/2002", 3)};
-        //denunciado: //data //id:
-        
-        
+            for (Denuncia denuncia : denuncias) {
+            cell.add(
+                new denunCell(
+                        denuncia.getTransferencia().getContaDestino().getCliente().getNome(),
+                        denuncia.getTransferencia().getData_transferencia(),
+                        denuncia.getId(),
+                        denuncia.getStatus().getDescricaoStatus()
+                ));
+        }
         
         //adiciona as celulas
-        int alturaTotal = ((60 + verticalGap))* (cell.length + 1);
+        int alturaTotal = ((60 + verticalGap))* (cell.size() + 1);
         content.setPreferredSize(new Dimension(400, alturaTotal));
         for(denunCell currentCell : cell){
             content.add(Box.createVerticalStrut(verticalGap));
@@ -93,7 +103,7 @@ public class funcAccont extends javax.swing.JFrame {
         scroll.setViewportView(content);
 
         getContentPane().add(scroll);
-        scroll.setBounds(0, 270, 1080, 620);
+        scroll.setBounds(0, 270, 1070, 620);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(20, 230, 1040, 10);
 

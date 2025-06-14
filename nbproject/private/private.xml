@@ -6,9 +6,11 @@
             <file>file:/C:/Projetos/safeBank/src/DAO/TransacaoDAO.java</file>
             <file>file:/C:/Projetos/safeBank/src/DAO/DenunciaDAO.java</file>
             <file>file:/C:/Projetos/safeBank/src/model/enums/StatusDenuncia.java</file>
-            <file>file:/C:/Projetos/safeBank/src/template/adm/funcAccont.java</file>
-            <file>file:/C:/Projetos/safeBank/src/Sources/denunCell.java</file>
             <file>file:/C:/Projetos/safeBank/src/template/adm/verDenuncia.java</file>
+            <file>file:/C:/Projetos/safeBank/src/model/Denuncia.java</file>
+            <file>file:/C:/Projetos/safeBank/src/Sources/denunCell.java</file>
+            <file>file:/C:/Projetos/safeBank/src/template/adm/funcAccont.java</file>
+            <file>file:/C:/Projetos/safeBank/src/template/client/historico.java</file>
         </group>
     </open-files>
 </project-private>
