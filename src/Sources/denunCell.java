@@ -22,13 +22,13 @@ public class denunCell extends javax.swing.JPanel {
     public denunCell() {
         initComponents();
     }
-     public denunCell(String _denunciado, String _data, int id) {
+    public denunCell(String _denunciado, String _data, int _id) {
         initComponents();
+
         denunciado.setText("Para: " + _denunciado);
-        data.setText(_data);
-        this.id = id;
-        parent = funcAccont.funcScreen;
-        
+        data.setText("Data: " + _data);
+        this.id = _id;
+        this.parent = funcAccont.funcScreen;
     }
     
 
