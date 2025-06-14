@@ -2,7 +2,11 @@ package template.client;
 
 import DAO.DenunciaDAO;
 import DAO.TransacaoDAO;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import model.Denuncia;
 import model.Transacao;
 import model.enums.StatusDenuncia;
@@ -235,17 +239,30 @@ public class denuncia extends javax.swing.JFrame {
 
         String texto = txtfld_data.getText();
 
-        // Impede mais de 10 caracteres (dd/mm/aaaa)
-        if (texto.length() >= 10) {
-            evt.consume();
-            return;
-        }
+    if (texto.length() == 2 || texto.length() == 5) {
+        txtfld_data.setText(texto + "/");
+    }
 
-        // Adiciona '/' automaticamente nas posições 2 e 5
-        if (texto.length() == 2 || texto.length() == 5) {
-            txtfld_data.setText(texto + "/");
+    // Após o usuário completar os 10 caracteres, valida a data
+    if (texto.length() == 9) { // Vai chegar a 10 depois do último número
+        SwingUtilities.invokeLater(() -> {
+            String dataTexto = txtfld_data.getText();
+            if (!dataValida(dataTexto)) {
+                JOptionPane.showMessageDialog(null, "Data inválida! Por favor, digite uma data real (ex: 14/06/2025).", "Erro de Data", JOptionPane.ERROR_MESSAGE);
+                txtfld_data.setText("");
+            }
+            });
         }
-        
+    }
+    // Função auxiliar para validar a data
+    private boolean dataValida(String data) {
+        try {
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(ResolverStyle.STRICT);
+            LocalDate.parse(data, formato);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }//GEN-LAST:event_txtfld_dataKeyTyped
 
     /**
