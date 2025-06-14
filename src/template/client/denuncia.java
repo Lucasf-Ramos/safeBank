@@ -1,6 +1,11 @@
 package template.client;
 
+import DAO.DenunciaDAO;
+import DAO.TransacaoDAO;
 import javax.swing.JOptionPane;
+import model.Denuncia;
+import model.Transacao;
+import model.enums.StatusDenuncia;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -143,26 +148,65 @@ public class denuncia extends javax.swing.JFrame {
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
         
-        String conta = txtfld_user.getText(); //conta a ser denunciada
-        String resumo = txtfld_resumo.getText();
-        String data = txtfld_data.getText();
-        
-        if(!conta.equals("") && !resumo.equals("") && !data.equals("") && data.length() >= 10 ){
-            //faz o processo aqui
-            
+    String protocoloStr = txtfld_user.getText().trim(); // Número de protocolo
+    String resumo = txtfld_resumo.getText().trim();     // Resumo da denúncia
+    String data = txtfld_data.getText().trim();         // Data da denúncia (não vai pro banco, só campo informativo na tela)
+
+
+    if (protocoloStr.isEmpty() || resumo.isEmpty() || data.isEmpty() || data.length() < 10) {
+        JOptionPane.showMessageDialog(this,
+            "Todos os campos devem ser preenchidos corretamente.",
+            "Erro de preenchimento",
+            JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    try {
+        long protocoloId = Long.parseLong(protocoloStr); // Convertendo protocolo para Long
+
+        TransacaoDAO transacaoDAO = new TransacaoDAO();
+        Transacao transacao = transacaoDAO.buscarTransacaoPorId(protocoloId);
+
+        if (transacao == null) {
+            JOptionPane.showMessageDialog(this,
+                "Transação com o número de protocolo informado não encontrada.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Denuncia denuncia = new Denuncia(resumo, StatusDenuncia.pendente, transacao);
+
+        DenunciaDAO denunciaDAO = new DenunciaDAO();
+        boolean sucesso = denunciaDAO.registrarDenuncia(denuncia);
+
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this,
+                "Denúncia registrada com sucesso!",
+                "Sucesso",
+                JOptionPane.INFORMATION_MESSAGE);
+
+            // Voltar pra tela principal do cliente
             clientAccont targetScreen = new clientAccont();
             this.setVisible(false);
             targetScreen.setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(null,
-                "Todos os campos devem ser preenchidos corretamente",
-                "Erro de transacao",
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "Falha ao registrar a denúncia no banco de dados.",
+                "Erro",
                 JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,
+                "O número de protocolo deve ser um número válido.",
+                "Erro de formato",
+                JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this,
+                "Erro inesperado: " + ex.getMessage(),
+                "Erro",
+                JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
