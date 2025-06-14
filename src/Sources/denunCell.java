@@ -4,6 +4,7 @@
  */
 package Sources;
 
+import model.Denuncia;
 import template.adm.funcAccont;
 import template.adm.verDenuncia;
 
@@ -16,13 +17,13 @@ public class denunCell extends javax.swing.JPanel {
     /**
      * Creates new form transationCell
      */
-    int id;
+    long id;
     funcAccont parent;
     
     public denunCell() {
         initComponents();
     }
-    public denunCell(String _denunciado, String _data, int _id) {
+    public denunCell(String _denunciado, String _data, long _id) {
         initComponents();
 
         denunciado.setText("Para: " + _denunciado);
@@ -30,6 +31,19 @@ public class denunCell extends javax.swing.JPanel {
         this.id = _id;
         this.parent = funcAccont.funcScreen;
     }
+    
+  /*public denunCell(Denuncia denuncia) {
+        initComponents();
+        this.id = denuncia.getId();
+        parent = funcAccont.funcScreen;
+
+        String denunciadoNome = denuncia.getTransferencia().getContaDestino().getCliente().getNome();
+        String dataTransferencia = denuncia.getTransferencia().getData_transferencia().toString();
+
+        denunciado.setText("Para: " + denunciadoNome);
+        data.setText(dataTransferencia);
+        status.setText("Status: " + denuncia.getStatus().name());
+    }*/
     
 
     /**
@@ -44,6 +58,7 @@ public class denunCell extends javax.swing.JPanel {
         denunciado = new javax.swing.JLabel();
         data = new javax.swing.JLabel();
         verMais = new javax.swing.JButton();
+        status = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -62,6 +77,8 @@ public class denunCell extends javax.swing.JPanel {
             }
         });
 
+        status.setText("Status:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +88,9 @@ public class denunCell extends javax.swing.JPanel {
                 .addComponent(denunciado)
                 .addGap(181, 181, 181)
                 .addComponent(data)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 478, Short.MAX_VALUE)
+                .addGap(197, 197, 197)
+                .addComponent(status)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(verMais)
                 .addGap(23, 23, 23))
         );
@@ -82,13 +101,14 @@ public class denunCell extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(denunciado)
                     .addComponent(data)
-                    .addComponent(verMais))
+                    .addComponent(verMais)
+                    .addComponent(status))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void verMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMaisActionPerformed
-        verDenuncia targetScreen = new verDenuncia(id);
+        verDenuncia targetScreen = new verDenuncia((int) id);
         parent.setVisible(false);
         targetScreen.setVisible(true);
     }//GEN-LAST:event_verMaisActionPerformed
@@ -97,6 +117,7 @@ public class denunCell extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel data;
     private javax.swing.JLabel denunciado;
+    private javax.swing.JLabel status;
     private javax.swing.JButton verMais;
     // End of variables declaration//GEN-END:variables
 }
