@@ -21,6 +21,10 @@ public class denunCell extends javax.swing.JPanel {
         this.id = _id;
         status.setText("Status: " + _status);
         this.parent = funcAccont.funcScreen;
+        
+        if (!_status.equalsIgnoreCase("pendente")) {
+            verMais.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
