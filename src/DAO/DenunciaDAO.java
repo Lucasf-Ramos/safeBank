@@ -44,11 +44,9 @@ public class DenunciaDAO {
                 denuncia.setId(rs.getLong("id"));
                 denuncia.setDescricao(rs.getString("descricao"));
 
-                // Convertendo status de String para Enum
                 String statusStr = rs.getString("status");
                 denuncia.setStatus(StatusDenuncia.valueOf(statusStr));
 
-                // Buscando a transação associada
                 long transacaoId = rs.getLong("transferencia_id");
                 Transacao transacao = transacaoDAO.buscarTransacaoPorId(transacaoId);
                 denuncia.setTransferencia(transacao);
@@ -111,7 +109,7 @@ public class DenunciaDAO {
                      "FROM denuncias d " +
                      "JOIN transferencia t ON d.transferencia_id = t.id " +
                      "JOIN conta c ON t.conta_origem = c.id OR t.conta_destino = c.id " +
-                     "WHERE c.id = ?";
+                     "WHERE c.cliente_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, clienteId);

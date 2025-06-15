@@ -6,6 +6,10 @@
             <file>file:/C:/Projetos/safeBank/src/template/adm/verDenuncia.java</file>
             <file>file:/C:/Projetos/safeBank/src/template/client/historicoDenuncias.java</file>
             <file>file:/C:/Projetos/safeBank/src/DAO/DenunciaDAO.java</file>
+            <file>file:/C:/Projetos/safeBank/src/Sources/denunCell.java</file>
+            <file>file:/C:/Projetos/safeBank/src/Sources/denunciaCellHistorico.java</file>
+            <file>file:/C:/Projetos/safeBank/src/template/client/historico.java</file>
+            <file>file:/C:/Projetos/safeBank/src/DAO/ContaDAO.java</file>
         </group>
     </open-files>
 </project-private>

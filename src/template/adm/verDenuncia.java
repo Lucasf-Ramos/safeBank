@@ -162,8 +162,8 @@ public class verDenuncia extends javax.swing.JFrame {
 
         var transacaoOriginal = _denuncia.getTransferencia();
 
-        long contaDenunciadoId = transacaoOriginal.getContaDestino().getId(); // Quem vai perder o valor
-        long contaDenuncianteId = transacaoOriginal.getContaOrigem().getId(); // Quem vai receber o valor de volta
+        long contaDenunciadoId = transacaoOriginal.getContaDestino().getId(); 
+        long contaDenuncianteId = transacaoOriginal.getContaOrigem().getId(); 
         double valor = transacaoOriginal.getValor();
 
         var contaDenunciado = contaDao.buscarContaPorId(contaDenunciadoId);
@@ -212,13 +212,11 @@ public class verDenuncia extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void historico_DenunciadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historico_DenunciadoActionPerformed
-        // TODO add your handling code here:
-        //usa o id do denunciado para entrar na tela de historico dele
+        
     }//GEN-LAST:event_historico_DenunciadoActionPerformed
 
     private void hitorico_denuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitorico_denuncianteActionPerformed
-        // TODO add your handling code here:
-         //usa o id do denunciante para entrar na tela de historico dele
+        
     }//GEN-LAST:event_hitorico_denuncianteActionPerformed
 
     public static void main(String args[]) {
