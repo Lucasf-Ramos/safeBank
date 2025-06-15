@@ -133,7 +133,6 @@ public class DenunciaDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao listar denúncias por cliente: " + e.getMessage());
         }
-
         return denuncias;
     }
 }

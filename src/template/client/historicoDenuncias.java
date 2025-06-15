@@ -33,16 +33,22 @@ public class historicoDenuncias extends javax.swing.JFrame {
                     denuncia.getStatus().getDescricaoStatus()
                 ));
         }
-       
+        
+        generateGrid();
+    }
+    
+    void generateGrid(){
         int verticalGap = 10;
+        
         contentDenuncia.setLayout(new BoxLayout(contentDenuncia, BoxLayout.Y_AXIS));
 
-        int alturaTotal = ((60 + verticalGap)) * (cell.size() + 1);
+        int alturaTotal = ((60 + verticalGap))* (cell.size() + 1);
         contentDenuncia.setPreferredSize(new Dimension(400, alturaTotal));
-
-        for (denunciaCellHistorico currentCell : cell) {
+        
+        for(denunciaCellHistorico currentCell : cell){
             contentDenuncia.add(Box.createVerticalStrut(verticalGap));
             contentDenuncia.add(currentCell);
+            
         }
     }
     

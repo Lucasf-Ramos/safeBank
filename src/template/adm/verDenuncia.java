@@ -1,7 +1,9 @@
 package template.adm;
 
+import DAO.ContaDAO;
 import DAO.DenunciaDAO;
 import model.Denuncia;
+import model.Transacao;
 import model.enums.StatusDenuncia;
 
 public class verDenuncia extends javax.swing.JFrame {
@@ -155,13 +157,52 @@ public class verDenuncia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AprovarActionPerformed
-        // TODO add your handling code here:
+        DenunciaDAO denunciaDao = new DenunciaDAO();
+        ContaDAO contaDao = new ContaDAO();
+
+        var transacaoOriginal = _denuncia.getTransferencia();
+
+        long contaDenunciadoId = transacaoOriginal.getContaDestino().getId(); // Quem vai perder o valor
+        long contaDenuncianteId = transacaoOriginal.getContaOrigem().getId(); // Quem vai receber o valor de volta
+        double valor = transacaoOriginal.getValor();
+
+        var contaDenunciado = contaDao.buscarContaPorId(contaDenunciadoId);
+        var contaDenunciante = contaDao.buscarContaPorId(contaDenuncianteId);
+
+        if (contaDenunciado != null && contaDenunciante != null) {
+            if (contaDenunciado.getSaldo() >= valor) {
+
+                double novoSaldoDenunciado = contaDenunciado.getSaldo() - valor;
+                double novoSaldoDenunciante = contaDenunciante.getSaldo() + valor;
+
+                boolean sucessoDebito = contaDao.atualizarSaldo(contaDenunciadoId, novoSaldoDenunciado);
+                boolean sucessoCredito = contaDao.atualizarSaldo(contaDenuncianteId, novoSaldoDenunciante);
+
+                if (sucessoDebito && sucessoCredito) {
+                    denunciaDao.atualizarStatus(_denuncia.getId(), StatusDenuncia.concluido);
+
+                    javax.swing.JOptionPane.showMessageDialog(this, "Denúncia aprovada e valor estornado com sucesso!");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Erro ao atualizar os saldos das contas.");
+                }
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "O denunciado não tem saldo suficiente para o estorno.");
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao buscar as contas no banco.");
+        }
     }//GEN-LAST:event_AprovarActionPerformed
 
     private void NegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NegarActionPerformed
         DenunciaDAO denunciaDao = new DenunciaDAO();
-        
-        denunciaDao.atualizarStatus(WIDTH, StatusDenuncia.rejeitado);
+
+        boolean atualizarDenuncia = denunciaDao.atualizarStatus(_denuncia.getId(), StatusDenuncia.rejeitado);
+
+        if (atualizarDenuncia) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Denúncia negada com sucesso!");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao atualizar o status da denúncia.");
+        }
     }//GEN-LAST:event_NegarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
