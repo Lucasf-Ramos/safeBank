@@ -14,6 +14,10 @@ public class Cliente extends Usuario {
         this.endereco = endereco;
     }
 
+    public Cliente() {
+        
+    }
+
     public long getClienteId() {
         return clienteId;
     }

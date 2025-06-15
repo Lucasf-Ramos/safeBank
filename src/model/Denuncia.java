@@ -1,24 +1,28 @@
 package model;
 
+import java.util.Date;
 import model.enums.StatusDenuncia;
 
 public class Denuncia {
     private long id;
     private String descricao;
     private StatusDenuncia status; 
+    private Date data;
     private Transacao transferencia;
 
    
-    public Denuncia(long id, String descricao, StatusDenuncia status, Transacao transferencia) {
+    public Denuncia(long id, String descricao, StatusDenuncia status, Date data, Transacao transferencia) {
         this.id = id;
         this.descricao = descricao;
         this.status = status;
+        this.data = data;
         this.transferencia = transferencia;
     }
 
-    public Denuncia(String descricao, StatusDenuncia status, Transacao transferencia) {
+    public Denuncia(String descricao, StatusDenuncia status, Date data, Transacao transferencia) {
         this.descricao = descricao;
         this.status = status;
+        this.data = data;
         this.transferencia = transferencia;
     }
 
@@ -51,6 +55,14 @@ public class Denuncia {
     }
     public void setTransferencia(Transacao transferencia) {
         this.transferencia = transferencia;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }
 

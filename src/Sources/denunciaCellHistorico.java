@@ -1,26 +1,22 @@
 package Sources;
 
 import java.util.Date;
-import template.adm.funcAccont;
-import template.adm.verDenuncia;
+import template.client.clientAccont;
 
+public class denunciaCellHistorico extends javax.swing.JPanel {
 
-public class denunCell extends javax.swing.JPanel {
-
-    long id;
-    funcAccont parent;
+    clientAccont parent;
     
-    public denunCell() {
+    public denunciaCellHistorico() {
         initComponents();
     }
-    public denunCell(String _denunciado, Date _data, long _id, String _status) {
+    public denunciaCellHistorico(long protocoloTransferencia, Date _data, String _status) {
         initComponents();
 
-        denunciado.setText("Cliente: " + _denunciado);
+        denunciado.setText("Protocolo Transferencia: " + protocoloTransferencia);
         data.setText("Data: " + _data);
-        this.id = _id;
         status.setText("Status: " + _status);
-        this.parent = funcAccont.funcScreen;
+        this.parent = clientAccont.clientScreen;
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +25,6 @@ public class denunCell extends javax.swing.JPanel {
 
         denunciado = new javax.swing.JLabel();
         data = new javax.swing.JLabel();
-        verMais = new javax.swing.JButton();
         status = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -38,16 +33,9 @@ public class denunCell extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(900, 50));
         setPreferredSize(new java.awt.Dimension(900, 50));
 
-        denunciado.setText("User: 000");
+        denunciado.setText("Protocolo de Transferência:");
 
         data.setText("data: 00/00/0000");
-
-        verMais.setText("ver mais");
-        verMais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verMaisActionPerformed(evt);
-            }
-        });
 
         status.setText("Status:");
 
@@ -58,38 +46,28 @@ public class denunCell extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(denunciado)
-                .addGap(181, 181, 181)
+                .addGap(217, 217, 217)
                 .addComponent(data)
-                .addGap(197, 197, 197)
+                .addGap(205, 205, 205)
                 .addComponent(status)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
-                .addComponent(verMais)
-                .addGap(23, 23, 23))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(denunciado)
                     .addComponent(data)
-                    .addComponent(verMais)
                     .addComponent(status))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void verMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verMaisActionPerformed
-        verDenuncia targetScreen = new verDenuncia(id);
-        parent.setVisible(false);
-        targetScreen.setVisible(true);
-    }//GEN-LAST:event_verMaisActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel data;
     private javax.swing.JLabel denunciado;
     private javax.swing.JLabel status;
-    private javax.swing.JButton verMais;
     // End of variables declaration//GEN-END:variables
 }

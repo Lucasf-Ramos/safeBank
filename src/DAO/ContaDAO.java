@@ -99,14 +99,17 @@ public class ContaDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
-
+            
             if (rs.next()) {
+                ClienteDAO clienteDAO = new ClienteDAO();
+                var cliente = clienteDAO.buscarClientePorId(rs.getLong("cliente_id"));
+            
                 Conta conta = new Conta(
                     rs.getLong("id"),
                     rs.getString("numero_conta"),
                     rs.getString("agencia"),
                     rs.getDouble("saldo"),
-                    null // pode buscar e setar o cliente se necessário
+                    cliente
                 );
                 
                 return conta;

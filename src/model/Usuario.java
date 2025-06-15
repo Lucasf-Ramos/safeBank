@@ -24,6 +24,10 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
     
+    public Usuario(){
+        
+    }
+    
     public long getId() {
         return id;
     }
