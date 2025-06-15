@@ -105,7 +105,7 @@ public class DenunciaDAO {
     
     public List<Denuncia> listarDenunciasPorClienteId(long clienteId) {
         List<Denuncia> denuncias = new ArrayList<>();
-        String sql = "SELECT d.id AS denuncia_id, d.descricao, d.status, d.transferencia_id " +
+        String sql = "SELECT d.id AS denuncia_id, d.descricao, d.status, d.data, d.transferencia_id " +
                      "FROM denuncias d " +
                      "JOIN transferencia t ON d.transferencia_id = t.id " +
                      "JOIN conta c ON t.conta_origem = c.id OR t.conta_destino = c.id " +
@@ -121,6 +121,7 @@ public class DenunciaDAO {
                 denuncia.setId(rs.getLong("denuncia_id"));
                 denuncia.setDescricao(rs.getString("descricao"));
                 denuncia.setStatus(StatusDenuncia.valueOf(rs.getString("status")));
+                denuncia.setData(rs.getDate("data"));
 
                 long transacaoId = rs.getLong("transferencia_id");
                 Transacao transacao = transacaoDAO.buscarTransacaoPorId(transacaoId);
