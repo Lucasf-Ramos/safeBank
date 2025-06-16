@@ -47,6 +47,9 @@ public class historico extends javax.swing.JFrame {
         generateGrid();
     }
     
+    
+    
+    
     void generateGrid(){
         int verticalGap = 10;
         
@@ -60,6 +63,33 @@ public class historico extends javax.swing.JFrame {
             
         }
     }
+    
+    
+    public historico(long clienteId) {
+        initComponents();
+
+        isFuncAccont = true;
+
+        TransacaoDAO transacaoDAO = new TransacaoDAO();
+        ContaDAO contaDao = new ContaDAO();
+        Conta conta = contaDao.buscarContaPorClienteId(clienteId);
+        var transacoes = transacaoDAO.listarTransferenciasPorContaId(conta);
+
+        for (Transacao transacao : transacoes) {
+            cell.add(
+                new transationCell(
+                    transacao.getContaDestino().getNumeroConta(),
+                    transacao.getContaOrigem().getNumeroConta(),
+                    transacao.getData_transferencia(),
+                    transacao.getId(),
+                    transacao.getValor(),
+                    transacao.getProtocolo()
+                )
+            );
+        }
+
+        generateGrid();
+    }    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -5,6 +5,7 @@ import DAO.DenunciaDAO;
 import model.Denuncia;
 import model.Transacao;
 import model.enums.StatusDenuncia;
+import template.client.historico;
 
 public class verDenuncia extends javax.swing.JFrame {
     
@@ -212,11 +213,20 @@ public class verDenuncia extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void historico_DenunciadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historico_DenunciadoActionPerformed
-        
+        long idDenunciado = _denuncia.getTransferencia().getContaDestino().getCliente().getClienteId();
+
+        historico targetScreen = new historico(idDenunciado);
+        this.setVisible(false);
+        targetScreen.setVisible(true);
     }//GEN-LAST:event_historico_DenunciadoActionPerformed
 
     private void hitorico_denuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitorico_denuncianteActionPerformed
-        
+        long idDenunciante = _denuncia.getTransferencia().getContaOrigem().getCliente().getClienteId();
+
+        historico targetScreen = new historico(idDenunciante);
+        this.setVisible(false);
+        targetScreen.setVisible(true);
+
     }//GEN-LAST:event_hitorico_denuncianteActionPerformed
 
     public static void main(String args[]) {
